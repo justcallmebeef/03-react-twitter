@@ -22,6 +22,7 @@
 * Add a MessageList class in between the import and export: `class MessageList extends Component {}`
 * Inside the curly braces, add a render method: `render() {}`
 * Inside those curly braces, return a `<div>`: `return (<div></div>)`
+* Give the `<div` a className matching the component's name: `className="MessageList"`
 * Make a `<p>` element with some dummy text
 * Check the browser (should see p)
 
@@ -59,7 +60,42 @@
 * Add stars. Start with a `<p>`
 * Import font-awesome at the top: `import 'font-awesome/css/font-awesome.min.css';`
 * Inside the new `<p>`, add a font-awesome star icon: `<i className="fa fa-star">`
-* Next to that, add the number of stars from the message: `{message.stars}`
-* Add the timestamp. Start with another `<p>`
-* Import moment at the top: `import moment from 'moment';`
-* Inside the `<p>` pass in the formatted timestamp: `{moment(message.timestamp).format("llll")}`
+* Next to that, add the number of stars from the message (and leave a space): ` {message.stars}`
+* Add the timestamp. At the top fo the Message function, create a new Date out of the timestamp: `const timestamp = new Date(message.timestamp);`
+* Add another `<p>` below the star count
+* Inside the `<p>` pass in the timestamp object, and format it with `.toDateString()`: `{timestamp.toDateString()}`
+
+## Add user input
+* In App.js, add `<MessageInput />` above the `<MessageList />`
+* Above the App class, add a new functional component called MessageInput
+* Give it an `<input>` with a type of text and a placeholder of Submit: `<input type="text" placeholder="Message"></input>`
+* Give it a `<button>` and pass in Submit: `<button>Submit</button>`
+* Pass a handler into input using `onChange`: `onChange={handleInput}`
+* Pass `handleInput` into the component as a destructured prop: `{ handleInput }`
+* Create the `handleInput` method inside App above `render()`: `handleInput = () => {}`
+* Pass in target as a destructured argument: `{ target }`
+* `Console.log()` target.value
+* At the instantiation of the <MessageInput />, pass in the handler as a prop: `handleInput={this.handleInput}`
+* Check the browser and console for your input.
+* Update state. Add newMessageText as an empty string: `newMessageText: ''`
+* Remove the `console.log()` in handleInput, and set state instead: `this.setState({ newMessageText: target.value });`
+* Pass newMessageText into the `<MessageInput />`: `newMessageText={this.state.newMessageText}`
+* Receive it in the functional component as a prop
+* Pass it into the `<input>` as value: `value={newMessageText}`
+* Submit the message. Add a onClick prop to the `<button />` with a value of submitMessage: `onClick={submitMessage}`
+* Add it to the props at the top of the component
+* Pass it into the component at instantiation: `submitMessage={this.submitMessage}`
+* Create it: `submitMessage = () => {}`
+* Inside, create a new messages variable from state: `const messages = this.state.messages;`
+* Create a newMessage object: `const newMessage = {}`
+* Give it the following properties:
+```
+messages_id: messages.length + 1,
+handle: '[YOUR HARD CODED HANDLE]',
+text: this.state.newMessageText,
+stars: 0,
+timestamp: Date.now()
+```
+* Add it to the messages array: `messages.unshift(newMessage);`
+* Update state with the new array and clear the newMessageText: `this.setState({ messages: messages, newMessageText: '' });`
+* Try adding a message
