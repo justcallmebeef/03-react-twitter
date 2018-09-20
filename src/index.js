@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import routes from './routes';
+import registerServiceWorker from './registerServiceWorker';
+import './index.css';
+
+class AppContainer extends Component {
+  render() {
+    return (
+      <MuiThemeProvider>
+        <BrowserRouter>
+          <div>
+            {routes}
+          </div>
+        </BrowserRouter>
+      </MuiThemeProvider>
+    )
+  }
+}
+
+ReactDOM.render(<AppContainer />, document.getElementById('root'));
 registerServiceWorker();
