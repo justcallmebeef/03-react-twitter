@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from './Navigation';
 
-const Account = () => {
+const Account = (props) => {
   return (
     <div>
       Account goes here!
