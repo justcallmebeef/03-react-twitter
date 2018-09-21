@@ -8,8 +8,10 @@
 * Fork this repo into your personal github account
 * Clone from your repo onto your local machine
 * `yarn install`
-* `yarn run client`
-* Open a new terminal tab, then `yarn run server`
+
+## To Run Locally
+* `yarn run server`
+* Open a new terminal tab, then `yarn run client`
 
 
 ## Sync With Master Repo
