@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Profile from './Profile/Profile';
 
 class App extends Component {
   componentDidMount() {
@@ -15,6 +16,8 @@ class App extends Component {
         <p className="App-intro">
           Check the console...
         </p>
+
+      <Profile />
       </div>
     );
   }
