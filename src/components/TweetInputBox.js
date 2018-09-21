@@ -15,7 +15,8 @@ class TweetInputBox extends Component {
 
     handleSubmit = async(event) => {
         event.preventDefault();
-        this.setState({ tweet: this.state.value });
+        let tweet = this.state.tweetInputBox || '';
+        this.setState({ tweet });
         // HTTP POST TO API: tweet
     }
 
