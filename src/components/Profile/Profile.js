@@ -19,50 +19,28 @@ class Profile extends Component {
   }
 
 
-  
+
   render() {
     return (
-      <div style={{
-        backgroundColor: "#fff",
-        boxShadow: '1px 2px 0 #333',
-        width: '600px',
-        height: '165px',
-        padding: '20px',
-        margin: 'auto',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)'
-      }}>
-        <ProfileAvatar image={this.state.avatar}/>
-        <div style={{
-          display: 'flex'
-        }}>
-        <h1 
-          data-handle={this.state.handle}
-          className="handle">{this.state.name}</h1>
-          <ul style={{
-            listStyleType: 'none',
-            display: 'flex'
-          }}>
+      <div className="ProfileContainer">
+        <div className="ProfileHeader">
+        <ProfileAvatar image={this.state.avatar} />
+          <h1
+            data-handle={this.state.handle}
+            className="handle">{this.state.name}</h1>
+          <ul className="InfoList">
             <li>messages: {this.state.message_count}</li>
             <li>likes: {this.state.star_count}</li>
           </ul>
         </div>
-        <div style={{
-          display: 'grid',
-          gridTemplateRows: '1fr 1fr',
-
-        }}>
+        <div className="InfoContainer">
           <p>
-          {this.state.bio}
+            {this.state.bio}
           </p>
-          <ul style={{
-            listStyleType: 'none',
-            display: 'flex'
-          }}>
-          <li>{this.state.location}</li>
-          <li>{this.state.link}</li>
-          <li>{this.state.birth_date}</li>
-            
+          <ul className="InfoList">
+            <li>{this.state.location}</li>
+            <li>{this.state.link}</li>
+            <li>{this.state.birth_date}</li>
           </ul>
         </div>
       </div>
