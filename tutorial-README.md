@@ -33,7 +33,7 @@
 * Add messages property to state with a value of an empty array: `messages: []`
 * Under state, add a componentDidMount method: `componentDidMount() {}`
 * In the code block of that method, add a fetch: `fetch()`
-* Pass in the URL for the representatives API call as a string: `'/api/helloworld'`
+* Pass in the URL for the representatives API call as a string: `'/api/hello'`
 * Chaining onto `fetch()`, handle the response with `.then()` and convert the streamed response to JSON: `.then(stream => stream.json())`
 * Chaining again, add another `.then()` and inside that, pass the res as an argument and console log it: `.then(res => console.log(res));`
 * Check the browser console. What do you see?
@@ -55,8 +55,7 @@
 * Destructure message from props as an argument for the function
 * Add a `<p>` inside the `<div>` and pass in the message `text`: `<p>{message.text}</p>`
 * Check the browser. Check the console. What's wrong?
-* Give the `<Message />` a key of `messages_id`: `key={message.messages_key}`
-* Add styling. Give the `<div>` inside the functional component a class: `className="Message"`
+* Give the `<Message />` a key of `messages_id`: `key={message.messages_id}`
 * Add the user's handle above the message text (include @): `<p>@{message.handle}</p>`
 * Add stars. Start with a `<p>`
 * Import font-awesome at the top: `import 'font-awesome/css/font-awesome.min.css';`
@@ -65,6 +64,8 @@
 * Add the timestamp. At the top fo the Message function, create a new Date out of the timestamp: `const timestamp = new Date(message.timestamp);`
 * Add another `<p>` below the star count
 * Inside the `<p>` pass in the timestamp object, and format it with `.toDateString()`: `{timestamp.toDateString()}`
+* Add styling. Give the `<div>` inside the functional component a class: `className="Message"`
+* :import 'MessageList.css';
 
 ## Add user input
 * In App.js, add `<MessageInput />` above the `<MessageList />`
