@@ -10,7 +10,7 @@ const Message = ({ message }) => {
       <p>@{message.handle}</p>
       <p>{message.text}</p>
       <div>
-        <p><i className="fa fa-star"></i> {message.stars}</p>
+        <p><i className="fa fa-star"></i> {message.star_count}</p>
         <p>{timestamp.toDateString()}</p>
       </div>
     </div>
