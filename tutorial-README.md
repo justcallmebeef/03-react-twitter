@@ -61,7 +61,7 @@
 * Add stars. Start with a `<p>`
 * Import font-awesome at the top: `import 'font-awesome/css/font-awesome.min.css';`
 * Inside the new `<p>`, add a font-awesome star icon: `<i className="fa fa-star">`
-* Next to that, add the number of stars from the message (and leave a space): ` {message.stars}`
+* Next to that, add the number of stars from the message (and leave a space): ` {message.star_count}`
 * Add the timestamp. At the top fo the Message function, create a new Date out of the timestamp: `const timestamp = new Date(message.timestamp);`
 * Add another `<p>` below the star count
 * Inside the `<p>` pass in the timestamp object, and format it with `.toDateString()`: `{timestamp.toDateString()}`
