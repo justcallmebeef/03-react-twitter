@@ -17,11 +17,8 @@ const loginController = async (req, res, next) => {
     let passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) return handleError(res, next, INV_REQ);
 
-    res.data = {
-      user: user.handle,
-      email: user.email,
-      name: user.name,
-      avatar: user.avatar };
+    delete user.password;
+    res.data = user;
     return next();
   } catch (err) {
     return handleError(res, next);
