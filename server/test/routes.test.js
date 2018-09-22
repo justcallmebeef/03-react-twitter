@@ -1,13 +1,10 @@
 
 const request = require('supertest');
-//const express = require('express');
-//
-//const app = express();
 const app = require('../index.js');
 const { expect } = require('chai');
 
-describe('GET /api/users/login', function() {
-  it('respond with json', function(done) {
+describe('POST /api/users/login', () => {
+  it('respond with json', (done) => {
     request(app)
       .post('/api/users/login')
       .set('Accept', 'application/json')
@@ -16,3 +13,7 @@ describe('GET /api/users/login', function() {
       .expect(200, done);
   });
 });
+
+after(() => {
+
+})

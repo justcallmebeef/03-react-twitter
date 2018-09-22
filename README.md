@@ -6,9 +6,13 @@
 ## Start
 * Fork this repo into your personal github account
 * Clone from your repo onto your local machine
-* `yarn install`
-* `yarn run client`
-* Open a new terminal tab, then `yarn run server`
+* `$ yarn install`
+
+* `$ createdb react_twitter` (make sure you have postgres downloaded globally)
+* `$ knex migrate:latest`
+* `$ knex seed:run`
+* `$ yarn run client`
+* Open a new terminal tab, then `$ yarn run server`
 
 
 ## Sync With Master Repo
@@ -19,10 +23,10 @@
 
 ## API Resources
 
-* GET `/api/helloworld`
+* POST `/api/users/login` (handle, password)
+* POST `/api/users/signup` (handle, email, name, password, avatar (optional))
 
 * GET `/api/messages`
-
 
 ## Components
 
