@@ -4,19 +4,30 @@
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
+    "bcrypt": "^3.0.1",
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "font-awesome": "^4.7.0",
+    "knex": "^0.15.2",
     "material-ui": "^0.20.2",
+    "pg": "^7.4.3",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "validator": "^10.7.1"
   },
   "scripts": {
     "client": "react-scripts start",
     "server": "nodemon server/index.js",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "cd server/; mocha --exit",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "proxyquire": "^2.1.0",
+    "supertest": "^3.3.0"
   }
 }
