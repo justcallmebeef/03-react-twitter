@@ -18,5 +18,8 @@ exports.seed = function(knex) {
           password: '$2b$10$M1hRH0FE1AJcqo4tT0uwkOWlnmxF6ewmWsmXW1lNhn/L7McVYnsHq' //password
         }
       ]);
+    })
+    .then(() => {
+      return knex.raw('SELECT setval(\'users_id_seq\', (SELECT MAX(id) FROM users));');
     });
 };

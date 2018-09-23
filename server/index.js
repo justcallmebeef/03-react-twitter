@@ -2,10 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
 
-const { getMessagesController } = require('./controllers/messages');
 const {
-  loginController,
-  signupController
+  getAllMessages,
+  getMessagesByUser,
+  createMessage
+} = require('./controllers/messages');
+const {
+  loginUser,
+  createUser
 } = require('./controllers/users')
 
 const app = express();
@@ -14,10 +18,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/api/messages', getMessagesController);
+app.get('/api/messages', getAllMessages);
+app.get('/api/messages/user/:userId', getMessagesByUser);
+app.post('/api/messages', createMessage);
 
-app.post('/api/users/login', loginController);
-app.post('/api/users/signup', signupController);
+app.post('/api/users/login', loginUser);
+app.post('/api/users/signup', createUser);
 
 
 app.get('/', (req, res) => {

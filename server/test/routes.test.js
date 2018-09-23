@@ -22,9 +22,9 @@ describe('POST /api/users/signup', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .end((err, res) => {
+        usersToDelete.push(res.body.data.id);
         assert.exists(res.body.data);
         assert.isUndefined(res.body.error);
-        usersToDelete.push(res.body.data.user.id);
         done();
       });
   });

@@ -3,11 +3,9 @@ const _ = require('lodash');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 10;
-// ERRORS
-const ERROR_500 = 'Internal Server Error';
-const INV_REQ = 'Bad Handle or Password';
+const { handleError, INV_REQ } = require('./utilities');
 
-const loginController = async (req, res, next) => {
+const loginUser = async (req, res, next) => {
   try {
     const { handle, password } = req.body;
     if (!handle || !password) return handleError(res, next, INV_REQ);
@@ -26,7 +24,7 @@ const loginController = async (req, res, next) => {
   }
 };
 
-const signupController = async(req, res, next) => {
+const createUser = async(req, res, next) => {
   try {
     const { handle, name, email, avatar, password } = req.body;
     if (!handle || !password || !name || !email || !validator.isEmail(email)) return handleError(res, next, INV_REQ);
@@ -39,24 +37,19 @@ const signupController = async(req, res, next) => {
     if (!hashedPassword) return handleError(res, next, INV_REQ);
 
     let userInfo = {
-      name,
-      handle,
-      email,
-      password: hashedPassword
+        name,
+        handle,
+        email,
+        password: hashedPassword
     }
     if (avatar && validator.isBase64(avatar)) userInfo.avatar = avatar;
 
     let insertedUser = _.head(await knex('users').insert(userInfo).returning(['id', 'name', 'handle', 'email', 'avatar']));
-    res.data = { user: insertedUser };
+    res.data = insertedUser;
     return next();
   } catch (err) {
     return handleError(res, next);
   }
-}
-
-const handleError = (res, next, err) => {
-  res.err = err || ERROR_500;
-  return next();
 }
 
 const findUserByEmail = async(email) => {
@@ -68,9 +61,8 @@ const findUserByHandle = async(handle) => {
 }
 
 module.exports = {
-  loginController,
-  signupController,
-  handleError,
+  loginUser,
+  createUser,
   findUserByEmail,
   findUserByHandle
-}
+};
