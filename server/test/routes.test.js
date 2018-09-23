@@ -7,7 +7,7 @@ const { assert } = require('chai');
 let usersToDelete = [];
 
 describe('POST /api/users/signup', () => {
-  it('handle successful signup', (done) => {
+  it('Handles successful signup', (done) => {
     let user = {
       name: 'Test User',
       handle: 'testUser',
@@ -49,7 +49,7 @@ describe('POST /api/users/login', () => {
     password: 'password'
   };
 
-  it('handle successful login', (done) => {
+  it('Handles successful login', (done) => {
     request(app)
       .post('/api/users/login')
       .send(loginInfo)

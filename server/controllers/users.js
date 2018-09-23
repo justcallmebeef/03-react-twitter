@@ -7,7 +7,6 @@ const SALT_ROUNDS = 10;
 const ERROR_500 = 'Internal Server Error';
 const INV_REQ = 'Bad Handle or Password';
 
-
 const loginController = async (req, res, next) => {
   try {
     const { handle, password } = req.body;
@@ -70,5 +69,8 @@ const findUserByHandle = async(handle) => {
 
 module.exports = {
   loginController,
-  signupController
+  signupController,
+  handleError,
+  findUserByEmail,
+  findUserByHandle
 }

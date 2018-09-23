@@ -7,7 +7,7 @@ exports.up = function(knex) {
     table.string('password').notNullable();
     table.string('avatar');
     table.timestamps(true, true);
-  })
+  });
 }
 
 exports.down = function(knex) {
