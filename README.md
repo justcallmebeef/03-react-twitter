@@ -8,9 +8,16 @@
 * Clone from your repo onto your local machine
 * `$ yarn install`
 
-* `$ createdb react_twitter` (make sure you have postgres downloaded globally)
-* `$ knex migrate:latest`
-* `$ knex seed:run`
+* Make sure you have postgres installed globally, then:
+```bash
+$ createdb react_twitter_dev
+$ createdb react_twitter_test
+$ cd server
+$ knex migrate:latest
+$ knex migrate:latest --env test
+$ knex seed:run
+$ cd ../
+```
 * `$ yarn run client`
 * Open a new terminal tab, then `$ yarn run server`
 

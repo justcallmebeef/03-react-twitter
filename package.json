@@ -9,6 +9,7 @@
     "express": "^4.16.3",
     "font-awesome": "^4.7.0",
     "knex": "^0.15.2",
+    "lodash": "^4.17.11",
     "material-ui": "^0.20.2",
     "pg": "^7.4.3",
     "react": "^16.5.1",
@@ -21,7 +22,7 @@
     "client": "react-scripts start",
     "server": "nodemon server/index.js",
     "build": "react-scripts build",
-    "test": "cd server/; mocha --exit",
+    "test": "cd server/; NODE_ENV=test mocha --exit",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
