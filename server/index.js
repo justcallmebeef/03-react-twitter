@@ -15,7 +15,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/api/hello', helloController);
 app.get('/api/messages', getMessagesController);
 
 app.post('/api/users/login', loginController);
