@@ -47,11 +47,12 @@ $ cd ../
       - `git add <files>`
       - `git commit -m "commit message here, closes #issueNumber"`
       - Please make sure to add the issue number that you completed in one of your commit messages (i.e., closes #17)
-    - Pull from upstream master which should be boulderReactCodingNight/03-react-twitter
-      - Confirm upstream master with `git remote -v`
+    - Pull from upstream which should be boulderReactCodingNight/03-react-twitter
+      - Confirm upstream with `git remote -v`
       - `git pull upstream master`
+      - Handle any merge conflicts
     - Push all of your code up to the remote (`git push origin master`)
-      - make sure your origin push is set to your fork (`git remote -v`)
+      - Make sure your origin is set to your fork (`git remote -v`)
   - Go to your fork on Gitub GUI (i.e., https://github.com/yourUserName/03-react-twitter)
   - Click Pull Requests on the top left of the window, then click New Pull Request (green button, top right)
   - Follow directions in the GUI
@@ -63,16 +64,12 @@ $ cd ../
 
 ## API Resources
 
-<<<<<<< HEAD
 * POST `/api/users/login` (handle, password)
 * POST `/api/users/signup` (handle, email, name, password, avatar (optional))
 
 * GET `/api/messages`
-
-## Components
-=======
-* GET `/api/helloworld`
-* GET `/api/messages`
+* GET `/api/messages/user/:userId`
+* POST `api/messages` (text, userId)
 
 
 ## Screens / User Stories
@@ -104,7 +101,6 @@ $ cd ../
 ### Profile  '/profile/:userId'
 * User can see all messages for a particular user sorted by date descending
 * User can see avatar, name, handle (unique), message_count, star_count, bio, location, link, birth_date for owner of page
->>>>>>> 93452223e7f4946c8d6d149fbcd62cf3c85691a1
 
 ### Account  '/account'
 * User can add or update their avatar (stored as base64 in db)
