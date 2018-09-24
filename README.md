@@ -56,8 +56,8 @@ $ cd ../
   - Go to your fork on Gitub GUI (i.e., https://github.com/yourUserName/03-react-twitter)
   - Click Pull Requests on the top left of the window, then click New Pull Request (green button, top right)
   - Follow directions in the GUI
-    - base fork: boulderReactCodingNight/03-react-twitter
-    - head fork: userName/03-react-twitter (this should be the fork you were working on)
+    - Base fork: boulderReactCodingNight/03-react-twitter
+    - Head fork: userName/03-react-twitter (this should be the fork you were working on)
     - Specify a branch if you were working on a specific branch.
     - Click Create Pull Request
 
