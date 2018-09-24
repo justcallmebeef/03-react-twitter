@@ -8,7 +8,7 @@ const ProfileAvatar = props => {
       backgroundImage: 'url(' + props.image + ')',
       backgroundRepeat: 'no-repeat',
       height: '150px',
-      width: '150px'
+      width: '170px'
     }}>
     </div>
   )
