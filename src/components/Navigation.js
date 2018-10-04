@@ -14,7 +14,7 @@ class Navigation extends Component{
   render () {
     return (
     <AppBar
-      iconClassNameRight="muidocs-icon-navigation-expand-more"
+      // iconClassNameRight="muidocs-icon-navigation-expand-more"
       iconElementLeft={<div></div>}
       iconElementRight={
         <div>
