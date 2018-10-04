@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navigation from './Navigation';
 import TweetInputBox from './TweetInputBox';
 import './App.css';
 
@@ -14,10 +13,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="App-title">React Twitter</h1>
-        <TweetInputBox />
         <p className="App-intro">
           Check the console...
         </p>
+        <TweetInputBox />
       </div>
     );
   }
