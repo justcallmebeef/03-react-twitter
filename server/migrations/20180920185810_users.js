@@ -6,6 +6,9 @@ exports.up = function(knex) {
     table.string('email').unique().notNullable();
     table.string('password').notNullable();
     table.string('avatar');
+    table.string('bio');
+    table.string('location');
+    table.date('birthday');
     table.timestamps(true, true);
   });
 }

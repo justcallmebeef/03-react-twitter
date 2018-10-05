@@ -26,7 +26,7 @@ const loginUser = async (req, res, next) => {
 
 const createUser = async(req, res, next) => {
   try {
-    const { handle, name, email, avatar, password } = req.body;
+    const { handle, name, email, avatar, password, bio, location, birthday } = req.body;
     if (!handle || !password || !name || !email || !validator.isEmail(email)) return handleError(res, next, INV_REQ);
 
     let dbUser = await Promise.all([findUserByEmail(email), findUserByHandle(handle)]);
@@ -40,11 +40,14 @@ const createUser = async(req, res, next) => {
         name,
         handle,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        bio,
+        location,
+        birthday
     }
     if (avatar && validator.isBase64(avatar)) userInfo.avatar = avatar;
 
-    let insertedUser = _.head(await knex('users').insert(userInfo).returning(['id', 'name', 'handle', 'email', 'avatar']));
+    let insertedUser = _.head(await knex('users').insert(userInfo).returning(['id', 'name', 'handle', 'email', 'avatar', 'bio', 'location', 'birthday']));
     res.data = insertedUser;
     return next();
   } catch (err) {
