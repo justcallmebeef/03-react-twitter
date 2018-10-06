@@ -69,8 +69,9 @@ $ cd ../
 
 * GET `/api/messages`
 * GET `/api/messages/user/:userId`
-* POST `api/messages` (text, userId)
+* POST `/api/messages` (text, userId)
 
+* POST `/api/replies` (text, userId, messageId, replyId (optional))
 
 ## Screens / User Stories
 
