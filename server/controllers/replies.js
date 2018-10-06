@@ -7,14 +7,14 @@ const createReply = async(req, res, next) => {
     let reply = {
         user_id: req.body.userId,
         text: req.body.text, 
-        message_id: req.body.message_id 
-    } = req.body;
-    if (req.body.reply_id) reply.replyId = req.body.reply_id;
-    if (!reply.userId || !reply.text || !reply.messageId) return handleError(res, next, INV_REQ);
+        message_id: req.body.messageId
+    };
+    if (req.body.reply_id) reply.reply_id = req.body.replyId;
+    if (!reply.user_id || !reply.text || !reply.message_id) return handleError(res, next, INV_REQ);
     
     let insertedReply = _.head(
         await knex('replies')
-        .insert({ reply })
+        .insert(reply)
         .returning(['id', 'user_id', 'text', 'message_id', 'reply_id']));
     res.data = insertedReply;
     return next();
