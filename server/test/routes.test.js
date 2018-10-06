@@ -158,7 +158,7 @@ describe('POST /api/messages', () => {
 describe('POST /api/replies', () => {
   it('Handles successful create reply', (done) => {
     request(app)
-      .post('/api/messages')
+      .post('/api/replies')
       .send({ userId: 1, text: 'Here is a successful reply', messageId: 1 })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
@@ -173,7 +173,7 @@ describe('POST /api/replies', () => {
 
   it('handle unsuccessful create reply', (done) => {
     request(app)
-      .post('/api/messages')
+      .post('/api/replies')
       .send({ text: 'Here is a text missing a userId and messageId'})
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
@@ -191,7 +191,7 @@ after(async() => {
     await Promise.all([
       knex('users').whereIn('id', usersToDelete).del(),
       knex('messages').whereIn('id', messagesToDelete).del(),
-      knex('users').whereIn('id', repliesToDelete).del()
+      knex('replies').whereIn('id', repliesToDelete).del()
     ])
   } catch (err) {
     console.log('Couldn\'t delete test user and/or message');

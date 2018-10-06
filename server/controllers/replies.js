@@ -9,7 +9,7 @@ const createReply = async(req, res, next) => {
         text: req.body.text, 
         message_id: req.body.messageId
     };
-    if (req.body.reply_id) reply.reply_id = req.body.replyId;
+    if (req.body.replyId) reply.reply_id = req.body.replyId;
     if (!reply.user_id || !reply.text || !reply.message_id) return handleError(res, next, INV_REQ);
     
     let insertedReply = _.head(
