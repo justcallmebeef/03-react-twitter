@@ -1,0 +1,20 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "space-in-parens": [2, "never"],
+    "comma-dangle": ["error", "never"],
+    "no-multiple-empty-lines": [2, { "max": 1, "maxEOF": 1, "maxBOF": 0}],
+    "quotes": [2, "single", "avoid-escape"]
+  }
+}
