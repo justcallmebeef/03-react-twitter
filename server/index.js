@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const path = require('path');
 
 const {
@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 // standardize error and data response to front end
-app.use('*', (req, res, next) => {
+app.use('*', (req, res) => {
   if (res.err) res.status(500).send({ error: res.err });
   else res.send({ data: res.data });
 });
