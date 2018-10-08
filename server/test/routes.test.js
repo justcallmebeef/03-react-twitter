@@ -14,7 +14,10 @@ describe('POST /api/users/signup', () => {
       name: 'Test User',
       handle: 'testUser',
       email: 'testUser@gmail.com',
-      password: 'password'
+      password: 'password',
+      bio: 'Test Bio',
+      location: 'Test, Location',
+      birthday: '01/01/1991'
     };
 
     request(app)

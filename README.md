@@ -22,8 +22,8 @@ $ cd ../
 ```
 
 ## To Run Locally
-* `$ yarn run client`
-* Open a new terminal tab, then `$ yarn run server`
+* `$ yarn run server`
+* Open a new terminal tab, then `$ yarn run client`
 
 
 ## To Run All Tests
