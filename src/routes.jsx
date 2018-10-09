@@ -5,6 +5,6 @@ import App from './components/App';
 
 export default (
   <Switch>
-    <Route exact path={'/'} component={App} />
+    <Route exact path="/" component={App} />
   </Switch>
 );
