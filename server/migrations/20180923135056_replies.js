@@ -4,7 +4,7 @@ exports.up = function(knex) {
       table.string('text').notNullable();
       table.integer('user_id').notNullable().references('users.id').onDelete('CASCADE');
       table.integer('message_id').notNullable().references('messages.id').onDelete('CASCADE');
-      table.integer('reply_id').references('replies.id');
+      table.integer('reply_id').references('replies.id').onDelete('CASCADE');
       table.timestamps(true, true);
     });
   }
