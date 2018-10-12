@@ -7,6 +7,7 @@
 
 * Fork this repo into your personal github account
 * Clone from your repo onto your local machine
+* Make sure you have yarn installed globally `npm install yarn -g`
 * `$ yarn install`
 
 * Make sure you have postgres installed globally, then:
