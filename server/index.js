@@ -10,7 +10,10 @@ const {
 const {
   loginUser,
   createUser
-} = require('./controllers/users')
+} = require('./controllers/users');
+const {
+  createReply
+} = require('./controllers/replies');
 
 const app = express();
 
@@ -24,6 +27,8 @@ app.post('/api/messages', createMessage);
 
 app.post('/api/users/login', loginUser);
 app.post('/api/users/signup', createUser);
+
+app.post('/api/replies', createReply);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
