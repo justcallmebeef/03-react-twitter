@@ -12,7 +12,7 @@
 
 * Make sure you have postgres installed globally, then from the base directory seed the databases:
 ```bash
-$ npm run seed
+$ yarn run seed
 ```
 Warning! This will drop and recreate all your dev databases!
 
