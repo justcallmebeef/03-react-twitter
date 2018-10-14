@@ -10,17 +10,11 @@
 * Make sure you have yarn installed globally `npm install yarn -g`
 * `$ yarn install`
 
-* Make sure you have postgres installed globally, then:
+* Make sure you have postgres installed globally, then from the base directory seed the databases:
 ```bash
-$ createdb react_twitter_dev
-$ createdb react_twitter_test
-$ cd server
-$ knex migrate:latest
-$ knex migrate:latest --env test
-$ knex seed:run
-$ knex seed:run --env test
-$ cd ../
+$ npm run seed
 ```
+Warning! This will drop and recreate all your dev databases!
 
 ## To Run Locally
 * `$ yarn run server`
