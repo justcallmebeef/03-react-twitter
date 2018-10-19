@@ -10,6 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 export default class AvatarDialog extends React.Component {
   state = {
     open: false,
+    url: ''
   };
 
   handleClickOpen = () => {
@@ -19,6 +20,14 @@ export default class AvatarDialog extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
+  handleUpdate = () => {
+    this.setState({ open: false });
+    this.props.changeAvatar(this.state.url);
+  }
+  handleUrlChange = (e) => {
+    this.setState({url : e.target.value })
+  }
 
   render() {
     return (
@@ -37,17 +46,19 @@ export default class AvatarDialog extends React.Component {
             <TextField
               autoFocus
               margin="dense"
-              id="name"
+              id="imageURL"
               label="Image URL"
               type="url"
               fullWidth
+              value={this.state.url}
+              onChange={this.handleUrlChange}
             />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleUpdate} color="primary">
               Update
             </Button>
           </DialogActions>
