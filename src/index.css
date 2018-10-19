@@ -12,6 +12,10 @@ body {
   margin-bottom: 0.5em;
 }
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 .login {
   max-width: 350px;
   margin: 3em auto;
