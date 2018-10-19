@@ -25,11 +25,16 @@ class Profile extends Component {
      console.log('The link was clicked.');
   }
 
+  changeAvatar = (url) => {
+    console.log("Changing avatar");
+    this.setState({avatar: url});
+  }
+
   render() {
     return (
       <div className="ProfileContainer">
         <div className="ProfileHeader">
-        <ProfileAvatar onClick={this.avatarClicked} image={this.state.avatar} />
+        <ProfileAvatar onClick={this.avatarClicked}  image={this.state.avatar} />
           <h1
             data-handle={this.state.handle}
             className="handle">{this.state.name}</h1>
@@ -48,7 +53,7 @@ class Profile extends Component {
             <li>{this.state.birth_date}</li>
           </ul>
         </div>
-        <AvatarDialog/>
+        <AvatarDialog changeAvatar={this.changeAvatar}/>
       </div>
     )
   }
