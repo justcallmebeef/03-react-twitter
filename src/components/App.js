@@ -4,11 +4,11 @@ import './App.css';
 import Profile from './Profile/Profile';
 
 class App extends Component {
-  componentDidMount() {
-    fetch('/api/messages')
-      .then(stream => stream.json())
-      .then(res => console.log(res))
-  }
+  // componentDidMount() {
+  //   fetch('/api/messages')
+  //     .then(stream => stream.json())
+  //     .then(res => console.log(res))
+  // }
 
   render() {
     return (
