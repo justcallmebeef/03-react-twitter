@@ -4,8 +4,9 @@ class Login extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            handle: null,
-            password: null,
+            handle: '',
+            password: '',
+            error: null,
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -19,7 +20,6 @@ class Login extends React.Component {
         
     }
     onSubmit (e){
-        // e.target.value
         e.preventDefault();
         const { handle, password } = this.state
 
@@ -27,16 +27,42 @@ class Login extends React.Component {
             return;
         }
 
-        console.log(handle, password)
+        fetch('/api/users/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({handle, password})
+        })
+        .then(response => response.json())
+        .then(response => {
+            if(response.error){
+                this.setState({
+                    error: response.error,
+                    password: '',
+                })
+            }
+            else{
+                const user = response.data
+                alert(user.name)
+            }
+        })
+        .catch(response => {
+            this.setState({error: response.error || 'Oops!'})
+        })
         
     }
     render() {
       return (
         <form onSubmit={this.onSubmit} method="post">
-            <input name="handle" type="text" onChange={this.onChange} value={this.state.handle}/>
-            <input name="password" type="password" onChange={this.onChange} value={this.state.password}/>
+            {this.state.error && <div className="form-error">{this.state.error}</div>}
+            <div className="form-field">
+                <input name="handle" type="text" onChange={this.onChange} value={this.state.handle}/>
+            </div>
+            <div className="form-field">
+                <input name="password" type="password" onChange={this.onChange} value={this.state.password}/>
+            </div>
             <button type="submit" className="btn">Login</button>
-            <pre>{JSON.stringify(this.state,null,2)}</pre>
         </form>
       );
     }
