@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router';
 
 class Login extends React.Component {
     constructor(props){
@@ -26,6 +27,7 @@ class Login extends React.Component {
         if(!handle || !password){
             return;
         }
+        
 
         fetch('/api/users/login', {
             method: "POST",
@@ -44,7 +46,9 @@ class Login extends React.Component {
             }
             else{
                 const user = response.data
-                alert(user.name)
+                alert(`${user.name}'s email is ${user.email}`)
+                this.props.history.push('/account')
+
             }
         })
         .catch(response => {
