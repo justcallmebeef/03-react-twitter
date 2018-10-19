@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import ProfileAvatar from './ProfileAvatar';
+import AvatarDialog from './AvatarDialog';
 
 import './Profile.css';
 
@@ -15,7 +16,8 @@ class Profile extends Component {
     bio: 'Front end dev located in Denver',
     location: 'Denver, CO',
     link: 'github.com/git',
-    birth_date: '03/02/1999'
+    birth_date: '03/02/1999',
+    dialog_open: false
   }
 
   avatarClicked(e) {
@@ -46,6 +48,7 @@ class Profile extends Component {
             <li>{this.state.birth_date}</li>
           </ul>
         </div>
+        <AvatarDialog/>
       </div>
     )
   }
