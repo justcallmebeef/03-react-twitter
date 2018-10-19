@@ -16,7 +16,7 @@ class Login extends React.Component {
 
     onChange (e){
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.id]: e.target.value
         }) 
         
     }
@@ -58,13 +58,15 @@ class Login extends React.Component {
     }
     render() {
       return (
-        <form onSubmit={this.onSubmit} method="post">
+        <form onSubmit={this.onSubmit} method="post" className="login">
             {this.state.error && <div className="form-error">{this.state.error}</div>}
             <div className="form-field">
-                <input name="handle" type="text" onChange={this.onChange} value={this.state.handle}/>
+                <label htmlFor="handle" className="form-label">Username</label>
+                <input type="text" id="handle" className="form-input" onChange={this.onChange} value={this.state.handle}/>
             </div>
             <div className="form-field">
-                <input name="password" type="password" onChange={this.onChange} value={this.state.password}/>
+                <label htmlFor="password" className="form-label">Password</label>
+                <input type="password" id="password" className="form-input" onChange={this.onChange} value={this.state.password}/>
             </div>
             <button type="submit" className="btn">Login</button>
         </form>
