@@ -7,19 +7,14 @@
 
 * Fork this repo into your personal github account
 * Clone from your repo onto your local machine
+* Make sure you have yarn installed globally `npm install yarn -g`
 * `$ yarn install`
 
-* Make sure you have postgres installed globally, then:
+* Make sure you have postgres installed globally, then from the base directory seed the databases:
 ```bash
-$ createdb react_twitter_dev
-$ createdb react_twitter_test
-$ cd server
-$ knex migrate:latest
-$ knex migrate:latest --env test
-$ knex seed:run
-$ knex seed:run --env test
-$ cd ../
+$ yarn run seed
 ```
+Warning! This will drop and recreate all your dev databases!
 
 ## To Run Locally
 * `$ yarn run server`
