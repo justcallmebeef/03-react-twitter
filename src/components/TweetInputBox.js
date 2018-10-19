@@ -5,12 +5,12 @@ class TweetInputBox extends Component {
         super();
 
         this.state = {
-            tweet: '',
+            tweet: ''
         }
     }
 
     handleChange = e => {
-        this.setState({ [e.currentTarget.name] : e.currentTarget.value });
+        this.setState({ [e.currentTarget.name] :e.currentTarget.value });
     }
 
     handleSubmit = async(event) => {
@@ -18,8 +18,6 @@ class TweetInputBox extends Component {
         let tweet = this.state.tweetInputBox || '';
         this.setState({ tweet });
         let res = await this.postData('/api/messages', {text: tweet, userId: 1});
-
-        
     }
 
     postData(url = ``, data = {}) {

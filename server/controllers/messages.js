@@ -29,7 +29,6 @@ const getMessagesByUser = async(req, res, next) => {
 const createMessage = async(req, res, next) => {
   try {
     let { userId, text } = req.body;
-    console.log('req', req.body)
     if (!userId || !text) return handleError(res, next, INV_REQ);
     let message = _.head(await knex('messages').insert({ user_id: userId, text }).returning(['id', 'user_id', 'text']));
     res.data = message;
