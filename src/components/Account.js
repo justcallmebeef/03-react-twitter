@@ -4,10 +4,10 @@ import './Profile/Account.css'
 
 class Account extends React.Component {
 
-  submitButton = (e) => {
-    console.log('click');
+  submitButton = () => {
+    alert('Updates Submitted!')
   }
-  
+
   render() {
     return (
     <div className="account">
