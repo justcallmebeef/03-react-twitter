@@ -18,13 +18,16 @@ class Profile extends Component {
     birth_date: '03/02/1999'
   }
 
-
+  avatarClicked(e) {
+     e.preventDefault();
+     console.log('The link was clicked.');
+  }
 
   render() {
     return (
       <div className="ProfileContainer">
         <div className="ProfileHeader">
-        <ProfileAvatar image={this.state.avatar} />
+        <ProfileAvatar onClick={this.avatarClicked} image={this.state.avatar} />
           <h1
             data-handle={this.state.handle}
             className="handle">{this.state.name}</h1>
