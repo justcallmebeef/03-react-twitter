@@ -5,11 +5,11 @@ import Profile from './Profile/Profile';
 import Footer from './Footer/Footer';
 
 class App extends Component {
-  componentDidMount() {
-    fetch('/api/messages')
-      .then(stream => stream.json())
-      .then(res => console.log(res))
-  }
+  // componentDidMount() {
+  //   fetch('/api/messages')
+  //     .then(stream => stream.json())
+  //     .then(res => console.log(res))
+  // }
 
   render() {
     return (
