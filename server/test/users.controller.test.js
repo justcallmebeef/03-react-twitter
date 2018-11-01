@@ -19,12 +19,14 @@ const runUsersControllerUnitTests = () => {
       assert.equal(res.err, INV_REQ)
     });
 
-    it('doe not Log in with incorect handle and password', async() => {
+    it('Handles incorect password', async() => {
       const next = () => {};
-      const req = { body: {
-        handle : 'janedoe',
-        password : 'qwertyuiop'
-      } };
+      const req = {
+        body:{
+          handle : 'janedoe',
+          password : 'qwertyuiop'
+        }
+      };
       let res = {};
       let things = await loginUser(req, res, next);
       assert.equal(res.err, INV_REQ)
@@ -36,8 +38,8 @@ const runUsersControllerUnitTests = () => {
     let usersToDelete = [];
     it('Inserts user with name, handle, email, password, bio, location, and birthday', async() => {
       const next = () => {};
-      const req = { body:
-        {
+      const req = {
+        body: {
           name: 'Jay Doe',
           handle: 'jayedoe',
           email: 'jaydoe@gmail.com',
