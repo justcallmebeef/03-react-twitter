@@ -82,7 +82,7 @@ const runUsersControllerUnitTests = () => {
       let res = {};
       await createUser(req, res, next);
       assert.equal(res.err, INV_REQ)
-    })
+    });
 
     it('Inserts user with name, handle, email, password, bio, location, and birthday', async() => {
       const next = () => {};
