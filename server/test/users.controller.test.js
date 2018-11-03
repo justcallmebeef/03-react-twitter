@@ -75,6 +75,15 @@ const runUsersControllerUnitTests = () => {
   });
 
   describe('createUser()', () => {
+
+    it('Handles missing req.body', async() => {
+      const next = () => {};
+      const req = { body: {} };
+      let res = {};
+      await createUser(req, res, next);
+      assert.equal(res.err, INV_REQ)
+    })
+
     it('Inserts user with name, handle, email, password, bio, location, and birthday', async() => {
       const next = () => {};
       const req = {
