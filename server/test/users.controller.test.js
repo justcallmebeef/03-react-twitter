@@ -84,6 +84,24 @@ const runUsersControllerUnitTests = () => {
       assert.equal(res.err, INV_REQ)
     });
 
+    it('Handles existing email', async() => {
+      const next = () => {};
+      const req = {
+        body: {
+          name: 'Hay Doe',
+          handle: 'yupyupyup',
+          email: 'haydoe@gmail.com',
+          password: 'drink water',
+          bio: 'I do stuff and things.',
+          location: 'KANSAS CITY, MO',
+          birthday: '01/01/1990'
+        }
+      };
+      const res = {};
+      await createUser(req, res, next);
+      assert.equal(res.err, 'Email is already in use.');
+    });
+
     it('Inserts user with name, handle, email, password, bio, location, and birthday', async() => {
       const next = () => {};
       const req = {
