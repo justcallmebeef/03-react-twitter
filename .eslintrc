@@ -15,6 +15,7 @@
     "space-in-parens": [2, "never"],
     "comma-dangle": ["error", "never"],
     "no-multiple-empty-lines": [2, { "max": 1, "maxEOF": 1, "maxBOF": 0}],
-    "quotes": [2, "single", "avoid-escape"]
-  }
+    "quotes": [2, "single", "avoid-escape"],
+    "react/forbid-prop-types": [0]
+    }
 }

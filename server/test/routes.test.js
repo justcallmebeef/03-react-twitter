@@ -1,16 +1,15 @@
-
+const { assert } = require('chai');
 const request = require('supertest');
 const app = require('../index.js');
 const knex = require('../knex');
-const { assert } = require('chai');
 
-let usersToDelete = [];
-let messagesToDelete = [];
-let repliesToDelete = [];
+const usersToDelete = [];
+const messagesToDelete = [];
+const repliesToDelete = [];
 
 describe('POST /api/users/signup', () => {
   it('Handles successful signup', (done) => {
-    let user = {
+    const user = {
       name: 'Test User',
       handle: 'testUser',
       email: 'testUser@gmail.com',
@@ -49,7 +48,7 @@ describe('POST /api/users/signup', () => {
 });
 
 describe('POST /api/users/login', () => {
-  let loginInfo = {
+  const loginInfo = {
     handle: 'testUser',
     password: 'password'
   };
@@ -131,7 +130,7 @@ describe('POST /api/messages', () => {
   it('Handles successful create message', (done) => {
     request(app)
       .post('/api/messages')
-      .send({ userId: 1, text: 'Here is a successful message'})
+      .send({ userId: 1, text: 'Here is a successful message' })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
@@ -146,7 +145,7 @@ describe('POST /api/messages', () => {
   it('handle unsuccessful create message', (done) => {
     request(app)
       .post('/api/messages')
-      .send({ text: 'Here is a message missing a userId'})
+      .send({ text: 'Here is a message missing a userId' })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(500)
@@ -177,7 +176,7 @@ describe('POST /api/replies', () => {
   it('handle unsuccessful create reply', (done) => {
     request(app)
       .post('/api/replies')
-      .send({ text: 'Here is a text missing a userId and messageId'})
+      .send({ text: 'Here is a text missing a userId and messageId' })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(500)
@@ -189,14 +188,14 @@ describe('POST /api/replies', () => {
   });
 });
 
-after(async() => {
+after(async () => {
   try {
     await Promise.all([
       knex('users').whereIn('id', usersToDelete).del(),
       knex('messages').whereIn('id', messagesToDelete).del(),
       knex('replies').whereIn('id', repliesToDelete).del()
-    ])
+    ]);
   } catch (err) {
-    console.log('Couldn\'t delete test user and/or message');
+    throw new Error('Couldn\'t delete test user and/or message');
   }
 });
