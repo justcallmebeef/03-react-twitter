@@ -4,7 +4,7 @@ const knex = require('../knex');
 
 const { loginUser } = require('../controllers/users');
 const { createUser } = require('../controllers/users');
-// const { findUserByEmail } = require('../controllers/users');
+const { findUserByEmail } = require('../controllers/users');
 // const { findUserByHandle } = require('../controllers/users');
 const { INV_REQ } = require('../controllers/utilities');
 
@@ -139,6 +139,17 @@ const runUsersControllerUnitTests = () => {
       usersToDelete.push(res.data.handle);
       expect(res.data).to.have.all.keys('id', 'name', 'handle', 'email', 'avatar', 'bio', 'location', 'birthday')
       expect(res.data.email).equal(usersEmail);
+    });
+
+  });
+
+  describe('findUserByEmail', () => {
+
+    it('Handles existing email', async() => {
+      const email = 'haydoe@gmail.com';
+      const foundUser = await findUserByEmail(email);
+      expect(foundUser).to.have.all.keys('id', 'name', 'handle', 'email', 'avatar', 'bio', 'location', 'birthday', "created_at", "updated_at", "password")
+      expect(foundUser.email).equal(email);
     });
 
   });
