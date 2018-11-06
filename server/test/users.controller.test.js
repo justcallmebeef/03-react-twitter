@@ -5,7 +5,7 @@ const knex = require('../knex');
 const { loginUser } = require('../controllers/users');
 const { createUser } = require('../controllers/users');
 const { findUserByEmail } = require('../controllers/users');
-// const { findUserByHandle } = require('../controllers/users');
+const { findUserByHandle } = require('../controllers/users');
 const { INV_REQ } = require('../controllers/utilities');
 
 const runUsersControllerUnitTests = () => {
@@ -152,6 +152,15 @@ const runUsersControllerUnitTests = () => {
       expect(foundUser.email).equal(email);
     });
 
+  });
+
+  describe('findUserByHandle', async() => {
+    it('Handles existing hanndle', async() => {
+      const handle = 'hayedoe';
+      const foundUser = await findUserByHandle(handle);
+      expect(foundUser).to.have.all.keys('id', 'name', 'handle', 'email', 'avatar', 'bio', 'location', 'birthday', "created_at", "updated_at", "password")
+      expect(foundUser.handle).equal(handle);
+    });
   });
 
   after(async() => {
