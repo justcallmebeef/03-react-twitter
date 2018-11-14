@@ -11,6 +11,7 @@
     "font-awesome": "^4.7.0",
     "knex": "^0.15.2",
     "lodash": "^4.17.11",
+    "lodash.cond": "^4.5.2",
     "material-ui": "^0.20.2",
     "nodemon": "^1.18.4",
     "pg": "^7.4.3",
