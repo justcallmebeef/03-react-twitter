@@ -12,7 +12,7 @@ const runUsersControllerUnitTests = () => {
 
   let usersToDelete = [];
 
-  before(async() =>  {
+  before( async() => {
     const next = () => {};
     const req = {
       body: {
@@ -53,7 +53,7 @@ const runUsersControllerUnitTests = () => {
         }
       };
       let res = {};
-      let things = await loginUser(req, res, next);
+      await loginUser(req, res, next);
       assert.equal(res.err, INV_REQ)
     });
 
@@ -163,7 +163,7 @@ const runUsersControllerUnitTests = () => {
     });
   });
 
-  after(async() => {
+  after( async() => {
     try {
       await knex('users').whereIn('handle', usersToDelete).del()
     } catch (err) {
