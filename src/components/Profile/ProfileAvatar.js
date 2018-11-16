@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProfileAvatar = props => {
   return (
-    <div style={{
+    <div onClick={props.onClick} style={{
       border: '2px solid #333',
       borderRadius: '50px',
       backgroundImage: 'url(' + props.image + ')',

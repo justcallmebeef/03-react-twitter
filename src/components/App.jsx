@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import TweetInputBox from './TweetInputBox';
 import './App.css';
 import Profile from './Profile/Profile';
+import Footer from './Footer/Footer';
 
 class App extends Component {
-  componentDidMount() {
-    fetch('/api/messages')
-      .then(stream => stream.json())
-      .then(res => console.log(res))
-  }
+  // componentDidMount() {
+  //   fetch('/api/messages')
+  //     .then(stream => stream.json())
+  //     .then(res => console.log(res))
+  // }
 
   render() {
     return (
@@ -17,8 +18,9 @@ class App extends Component {
         <p className="App-intro">
           Check the console...
         </p>
-      <Profile />
-      <TweetInputBox />
+        <Profile />
+        <TweetInputBox />
+        <Footer />
       </div>
     );
   }
