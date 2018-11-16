@@ -1,5 +1,6 @@
 # Initial Dev Environment Set Up
 1. Install yarn globally
+	* `npm i -g yarn`
 2. Install postgres
 	* Mac: using homebrew: `brew install postgresql`
 	* Windows: [PostgreSQL: Windows installers](https://www.postgresql.org/download/windows/)
