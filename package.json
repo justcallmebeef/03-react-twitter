@@ -23,6 +23,7 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "sinon": "^6.3.4",
+    "styled-components": "^4.1.1",
     "validator": "^10.7.1"
   },
   "scripts": {
