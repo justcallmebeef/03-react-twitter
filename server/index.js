@@ -9,6 +9,7 @@ const {
 } = require('./controllers/messages');
 const {
   loginUser,
+  updateUser,
   createUser
 } = require('./controllers/users');
 const {
@@ -26,6 +27,7 @@ app.get('/api/messages/user/:userId', getMessagesByUser);
 app.post('/api/messages', createMessage);
 
 app.post('/api/users/login', loginUser);
+app.post('/api/users/update', updateUser);
 app.post('/api/users/signup', createUser);
 
 app.post('/api/replies', createReply);

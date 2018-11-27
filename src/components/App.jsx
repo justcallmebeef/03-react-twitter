@@ -3,18 +3,26 @@ import TweetInputBox from './TweetInputBox';
 import './App.css';
 import Profile from './Profile/Profile';
 import Footer from './Footer/Footer';
+import UploadPhoto from './Profile/UploadPhoto';
 
 class App extends Component {
-  // componentDidMount() {
-  //   fetch('/api/messages')
-  //     .then(stream => stream.json())
-  //     .then(res => console.log(res))
-  // }
-
+  constructor(props) {
+    super();
+    this.state = {
+      photo: ''
+    }
+  }
+  
   render() {
     return (
       <div className="App">
         <h1 className="App-title">React Twitter</h1>
+        <UploadPhoto
+          onImageLoaded={ imageFile => {
+            this.setState({ photo: imageFile })
+          }}
+        />
+        <img src={this.state.photo}/>
         <p className="App-intro">
           Check the console...
         </p>
