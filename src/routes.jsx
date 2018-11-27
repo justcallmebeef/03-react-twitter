@@ -4,6 +4,7 @@ import Account from './components/Account';
 import Navigation from './components/Navigation';
 import App from './components/App';
 import Login from './components/Login';
+import Register from './components/Register';
 import SampleReduxContainer from './components/SampleReduxContainer';
 
 export default (
@@ -14,6 +15,7 @@ export default (
         <Route exact path={'/'} component={App} />
         <Route path={'/account'} component={Account} />
         <Route path={'/login'} component={Login} />
+        <Route path={'/register'} component={Register} />
         <Route path={'/redux'} component={SampleReduxContainer} />
       </Switch>
     </div>
