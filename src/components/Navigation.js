@@ -27,6 +27,9 @@ class Navigation extends Component{
           <Link to='/login'>
             <FlatButton label="Login" secondary={this.props.location.pathname === "/login"}/>
           </Link>
+          <Link to='/register'>
+            <FlatButton label="Register" secondary={this.props.location.pathname === "/register"}/>
+          </Link>
         </div>}
       />
     )};

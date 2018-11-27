@@ -10,7 +10,8 @@ const {
 const {
   loginUser,
   updateUser,
-  createUser
+  createUser,
+  findUserByHandle
 } = require('./controllers/users');
 const {
   createReply
@@ -29,6 +30,7 @@ app.post('/api/messages', createMessage);
 app.post('/api/users/login', loginUser);
 app.post('/api/users/update', updateUser);
 app.post('/api/users/signup', createUser);
+app.get('/api/users/:handle', findUserByHandle);
 
 app.post('/api/replies', createReply);
 
