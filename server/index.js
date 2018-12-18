@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const path = require('path');
 
 const {
@@ -9,7 +9,8 @@ const {
 } = require('./controllers/messages');
 const {
   loginUser,
-  createUser
+  createUser,
+  findUserByHandle
 } = require('./controllers/users');
 const {
   createReply
@@ -19,7 +20,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('/api/messages', getAllMessages);
 app.get('/api/messages/user/:userId', getMessagesByUser);
@@ -27,15 +28,16 @@ app.post('/api/messages', createMessage);
 
 app.post('/api/users/login', loginUser);
 app.post('/api/users/signup', createUser);
+app.get('/api/users/:handle', findUserByHandle);
 
 app.post('/api/replies', createReply);
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
 // standardize error and data response to front end
-app.use('*', (req, res, next) => {
+app.use('*', (req, res) => {
   if (res.err) res.status(500).send({ error: res.err });
   else res.send({ data: res.data });
 });

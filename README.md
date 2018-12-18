@@ -11,9 +11,19 @@
 * `$ yarn install`
 
 * Make sure you have postgres installed globally, then from the base directory seed the databases:
+
+If this is the first time creating the databases use: 
+
 ```bash
 $ yarn run seed
 ```
+
+If you already have the databases created and want to re-migrate, use:
+
+```bash
+$ yarn run drop && yarn run seed
+```
+
 Warning! This will drop and recreate all your dev databases!
 
 ## To Run Locally

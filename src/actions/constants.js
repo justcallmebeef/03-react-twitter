@@ -1,0 +1,3 @@
+export const POST_MESSAGE = 'POST_MESSAGE';
+export const GET_MESSAGES_SUCCESS = 'GET_MESSAGES_SUCCESS';
+export const SET_USER_INFO = 'SET_USER_INFO';
