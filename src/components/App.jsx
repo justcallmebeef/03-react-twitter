@@ -7,9 +7,6 @@ import Footer from './Footer/Footer';
 class App extends Component {
   constructor(props) {
     super();
-    this.state = {
-      photo: ''
-    }
   }
   
   render() {
