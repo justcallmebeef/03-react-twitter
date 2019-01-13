@@ -30,7 +30,6 @@ class UploadPhoto extends Component {
   render() {
     return (
       <div>
-        <p>Upload your avatar.</p>
         <label
           className="upload-file"
           htmlFor="my-upload-btn"

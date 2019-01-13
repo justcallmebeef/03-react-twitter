@@ -2,15 +2,12 @@ import React from 'react'
 
 const ProfileAvatar = props => {
   return (
-    <div onClick={props.onClick} style={{
+    <img onClick={props.onClick} src={props.image} style={{
       border: '2px solid #333',
       borderRadius: '50px',
-      backgroundImage: 'url(' + props.image + ')',
-      backgroundRepeat: 'no-repeat',
       height: '150px',
       width: '170px'
-    }}>
-    </div>
+    }}/>
   )
 }
 
