@@ -13,11 +13,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="App-title">React Twitter</h1>
-        <p className="App-intro">
-          Check the console...
-        </p>
-        <Profile />
         <TweetInputBox />
+        <Profile />
         <Footer />
       </div>
     );
