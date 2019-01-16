@@ -1,16 +1,16 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import UploadPhoto from './UploadPhoto';
 
 export default class AvatarDialog extends React.Component {
   state = {
     open: false,
-    url: ''
+    avatarUrl: ''
   };
 
   handleClickOpen = () => {
@@ -22,11 +22,11 @@ export default class AvatarDialog extends React.Component {
   };
 
   handleUpdate = () => {
+    this.handleAvatarUIChange(this.state.avatarUrl);
     this.setState({ open: false });
-    this.props.changeAvatar(this.state.url);
   }
-  handleUrlChange = (e) => {
-    this.setState({url : e.target.value })
+  handleAvatarUIChange = (image) => {
+    this.props.changeAvatar(image);
   }
 
   render() {
@@ -41,18 +41,13 @@ export default class AvatarDialog extends React.Component {
           <DialogTitle id="form-dialog-title">Change Avatar</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              To update your avatar, input a valid image URL for the image.
+              To update your avatar, upload a .jpg or .png.
             </DialogContentText>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="imageURL"
-              label="Image URL"
-              type="url"
-              fullWidth
-              value={this.state.url}
-              onChange={this.handleUrlChange}
-            />
+             <UploadPhoto
+                onImageLoaded={ (imageFile) => {
+                  this.setState({ avatarUrl: imageFile });
+                }}
+              />
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
