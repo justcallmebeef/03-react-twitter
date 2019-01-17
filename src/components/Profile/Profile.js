@@ -30,9 +30,10 @@ class Profile extends Component {
   }
 
   renderMessageItem(messagesList) {
-    let htmlList = <li>Test Message</li>;
-    messagesList.forEach(message => {
-      htmlList += <li>{message.text}</li>
+    let htmlList = [];
+    // TODO Sort array by time stamp, once time stamp is getting here from data.
+    messagesList.forEach((message, index) => {
+      htmlList.push(<li key={index}>--- {message.text}</li>);
     })
     return htmlList;
   }
@@ -72,18 +73,21 @@ class Profile extends Component {
           <p>
             {this.state.bio}
           </p>
-          <div>
-            <ul>
-              {this.state.messages}
-            </ul>
-          </div>
+          
           <ul className="InfoList">
             <li>{this.state.location}</li>
             <li>{this.state.link}</li>
             <li>{this.state.birth_date}</li>
           </ul>
+          
         </div>
         <AvatarDialog changeAvatar={this.changeAvatar}/>
+        <div className="messageView">
+          <h2>{this.state.name}'s Message List</h2>
+          <ul>
+            {this.state.messages}
+          </ul>
+        </div>
       </div>
     )
   }
