@@ -1,4 +1,7 @@
 #!/bin/bash
+# used for docker users
+# exports default postgres values for connection
+# starts a postgres container with default values
 
 # make sure scripts.sh is executable: chmod +x scripts.sh
 # usage: ./scripts.sh [export|docker]
