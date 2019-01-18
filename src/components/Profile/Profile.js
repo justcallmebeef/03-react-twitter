@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import ProfileAvatar from './ProfileAvatar';
 import AvatarDialog from './AvatarDialog';
-import { getMessages } from '../../api/messageApi'; 
+import { getMessages } from '../../api/messageApi';
 
 import './Profile.css';
 
@@ -77,13 +77,13 @@ class Profile extends Component {
           <p>
             {this.state.bio}
           </p>
-          
+
           <ul className="InfoList">
             <li>{this.state.location}</li>
             <li>{this.state.link}</li>
             <li>{this.state.birth_date}</li>
           </ul>
-          
+
         </div>
         <AvatarDialog changeAvatar={this.changeAvatar}/>
         <div className="messageView">
