@@ -1,16 +1,47 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-
 const style = {
   margin: 12,
 };
 
-
 class Navigation extends Component{
+
+  loginButton(){
+    if(this.props.user.id === undefined){
+      return(
+        <Link to='/login'>
+          <FlatButton label="Login" secondary={this.props.location.pathname === "/login"}/>
+        </Link>
+      );
+    }
+  }
+
+  accountButton(){
+    if(this.props.user.id !== undefined) {
+      return(
+        <Link to='/account'>
+          <FlatButton label="Account" secondary={this.props.location.pathname === "/account"} />
+        </Link>
+      );
+    }
+  }
+
+  registerButton(){
+    if(this.props.user.id === undefined){
+      return(
+        <Link to='/register'>
+          <FlatButton label="Register" secondary={this.props.location.pathname === "/register"}/>
+        </Link>
+      );
+    }
+  }
+
   render () {
     return (
     <AppBar
@@ -21,18 +52,24 @@ class Navigation extends Component{
           <Link to='/'>
             <FlatButton label="Dashboard" secondary={this.props.location.pathname === "/"}/>
           </Link>
-          <Link to='/account'>
-            <FlatButton label="Account" secondary={this.props.location.pathname === "/account"} />
-          </Link>
-          <Link to='/login'>
-            <FlatButton label="Login" secondary={this.props.location.pathname === "/login"}/>
-          </Link>
-          <Link to='/register'>
-            <FlatButton label="Register" secondary={this.props.location.pathname === "/register"}/>
-          </Link>
+          { this.accountButton() }
+          { this.loginButton() }
+          { this.registerButton() }
         </div>}
       />
     )};
   }
 
-export default withRouter(Navigation);
+function mapStateToProps(state, props){
+  return {
+    app: state.app,
+    user: state.user
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navigation));
