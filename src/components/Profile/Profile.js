@@ -12,7 +12,7 @@ class Profile extends Component {
     avatar: 'https://via.placeholder.com/150x150',
     name: 'Paul',
     handle: '@jack',
-    message_count: this.getMessages(),
+    message_count: 0,
     // star_count: '73',
     bio: 'Front end dev located in Denver',
     location: 'Denver, CO',
@@ -21,11 +21,13 @@ class Profile extends Component {
     dialog_open: false
   }
 
-  getMessages() {
-    getMessages().then(res => {
-      this.setState({star_count: this.addStars(res.data)});
-      this.setState({message_count: res.data.length});
-      this.setState({messages: this.renderMessageItem(res.data)});
+  setStateFromMessages() {
+    getMessages().then((res) => {
+      if (res && res.data) {
+        this.setState({ star_count: this.addStars(res.data) });
+        this.setState({ message_count: res.data.length });
+        this.setState({ messages: this.renderMessageItem(res.data) });
+      }
     });
   }
 
@@ -40,9 +42,11 @@ class Profile extends Component {
 
   addStars(messagesList) {
     let stars = 0;
-    messagesList.forEach(message => {
-      stars += message.stars;
-    });
+    if (messagesList) {
+      messagesList.forEach(message => {
+        stars += message.stars;
+      });
+    }
     return stars;
   }
 
