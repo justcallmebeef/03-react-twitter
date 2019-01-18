@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './Navigation';
-import './Profile/Account.css'
+import './Account.css'
 
 class Account extends Component {
 
