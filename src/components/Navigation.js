@@ -5,6 +5,7 @@ import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import * as loginActions from '../actions/loginActions';
 
 const style = {
   margin: 12,
@@ -27,6 +28,18 @@ class Navigation extends Component{
       return(
         <Link to='/account'>
           <FlatButton label="Account" secondary={this.props.location.pathname === "/account"} />
+        </Link>
+      );
+    }
+  }
+
+  logoutButton(){
+    if(this.props.user.id !== undefined){
+      return(
+        <Link to='/'>
+          <FlatButton 
+            onClick={ () => this.props.loginActions.logoutUser() }
+            label="Log Out" secondary={this.props.location.pathname === "/"} />
         </Link>
       );
     }
@@ -55,6 +68,7 @@ class Navigation extends Component{
           { this.accountButton() }
           { this.loginButton() }
           { this.registerButton() }
+          { this.logoutButton() }
         </div>}
       />
     )};
@@ -69,6 +83,7 @@ function mapStateToProps(state, props){
 
 function mapDispatchToProps(dispatch){
   return {
+    loginActions: bindActionCreators(loginActions, dispatch)
   }
 }
 

@@ -7,3 +7,10 @@ export function setUser(user) {
     user: user
   }
 }
+
+export function logoutUser(){
+  return {
+    type: SET_USER_INFO,
+    user: {}
+  }
+}
