@@ -11,20 +11,24 @@ export function getMessages() {
     });
 }
 
-export async function postMessage(user_id, text) {
-    try {
-      const response = await fetch('/api/messages', {
-        headers: {
-          Accept: 'application/json text/plain, */*',
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({ userId: user_id, text: text }),
-      });
-      return response.json();
-    } catch(e){
-      console.error(e);
-      throw new Error(e);
-    }
+export function postMessage(user_id, text) {
+  return new Promise(async(resolve, reject) => {
+      try {
+        const response = await fetch('/api/messages', {
+          headers: {
+            Accept: 'application/json text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+          method: 'POST',
+          body: JSON.stringify({ userId: user_id, text: text }),
+        });
+        resolve(response.json())
+      } catch(e){
+        console.error(e);
+        reject(e);
+      }
+  });
 }
+
+
 

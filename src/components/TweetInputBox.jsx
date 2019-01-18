@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as messageActions from '../actions/messageActions';
+import * as messageApi from '../api/messageApi';
 
 class TweetInputBox extends Component {
   constructor() {
@@ -22,17 +23,20 @@ class TweetInputBox extends Component {
     this.setState({ tweet: tweetInputBox || '' });
 
     if(this.props.user.id !== undefined){
-      this.props.messageActions.postMessage(this.props.user.id, this.state.tweet);
-      this.setState({ tweet: '' });
+      messageApi.postMessage(this.props.user.id, this.state.tweet).then(() => {
+        console.log('TODO: Call load messages action. Dispatch to redux.');
+        this.setState({ tweet: '' });
+      });
     }
-    // HTTP POST TO API: tweet
   }
 
   tweetBox(){
     if(this.props.user.id !== undefined){
       return(
         <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleChange} maxLength="144" name="tweetInputBox" placeholder="What's on your mind?" />
+          <input
+            value={ this.state.tweet }
+            type="text" onChange={this.handleChange} maxLength="144" name="tweetInputBox" placeholder="What's on your mind?" />
           <input type="submit" value="Submit" />
         </form>
       );
