@@ -33,6 +33,8 @@
     "build": "react-scripts build",
     "test": "cd server/; NODE_ENV=test mocha --exit",
     "eject": "react-scripts eject",
+    "start-postgres": "pg_ctl -D /usr/local/var/postgres start",
+    "stop-postgres": "pg_ctl -D /usr/local/var/postgres stop",
     "drop": "dropdb react_twitter_dev && dropdb react_twitter_test",
     "seed": "createdb react_twitter_dev && createdb react_twitter_test && cd server && knex migrate:latest && knex migrate:latest --env test && knex seed:run && knex seed:run --env test"
   },
