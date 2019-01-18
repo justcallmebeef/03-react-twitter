@@ -31,5 +31,8 @@ export function loadMessages() {
   return dispatch => messageApi.getMessages()
     .then((messages) => {
       dispatch(getMessagesSuccess(messages));
+    })
+    .catch((error) => {
+      console.log(error); // eslint-disable no-console
     });
 }

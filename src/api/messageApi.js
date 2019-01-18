@@ -5,7 +5,10 @@ export function getMessages() {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     }
-  }).then(res => res.json());
+  }).then(res => res.json())
+    .catch((error) => {
+      console.log(error); // eslint-disable no-console
+    });
 }
 
 export async function postMessage(user_id, text) {
