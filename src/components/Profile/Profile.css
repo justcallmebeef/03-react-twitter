@@ -38,8 +38,17 @@
   display: flex;
 }
 
-
-
-ul li  {
+ul li {
   padding: 10px;
+}
+
+.messageView {
+  padding: 2em;
+
+}
+
+.messageView ul li {
+  padding: 0;
+  padding-bottom: 1em;
+  list-style: none;
 }
