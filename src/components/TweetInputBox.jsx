@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as messageActions from '../actions/messageActions';
 
 class TweetInputBox extends Component {
   constructor() {
@@ -12,13 +13,18 @@ class TweetInputBox extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({ [e.currentTarget.name]: e.currentTarget.value });
+    this.setState({ tweet: e.currentTarget.value });
   }
 
   handleSubmit = async (event) => {
     event.preventDefault();
     const { tweetInputBox } = this.state;
     this.setState({ tweet: tweetInputBox || '' });
+
+    if(this.props.user.id !== undefined){
+      this.props.messageActions.postMessage(this.props.user.id, this.state.tweet);
+      this.setState({ tweet: '' });
+    }
     // HTTP POST TO API: tweet
   }
 
@@ -53,6 +59,7 @@ function mapStateToProps(state, props){
 
 function mapDispatchToProps(dispatch){
   return {
+    messageActions: bindActionCreators(messageActions, dispatch)
   }
 }
 
