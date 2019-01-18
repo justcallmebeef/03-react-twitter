@@ -1,4 +1,3 @@
-import * as userApi from '../api/userApi';
 import { SET_USER_INFO } from '../actions/constants';
 
 export function setUser(user) {
