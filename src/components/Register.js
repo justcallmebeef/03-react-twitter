@@ -1,8 +1,5 @@
 import React from 'react'
-import styled from 'styled-components';
 import { registerUser } from '../api/user';
-
-const PageStyles = styled.div
 
 class Register extends React.Component {
   state = {
@@ -26,7 +23,7 @@ class Register extends React.Component {
     event.preventDefault();
     registerUser(this.state);
   };
-  
+
   render() {
     return (
       <div>

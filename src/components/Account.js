@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navigation from './Navigation';
 import './Account.css'
 
 class Account extends Component {
