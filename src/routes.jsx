@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Account from './components/Account';
 import Navigation from './components/Navigation';
 import App from './components/App';
-import Login from './components/Login';
+import Login from './components/Login/Login';
 import Register from './components/Register';
 import SampleReduxContainer from './components/SampleReduxContainer';
 
