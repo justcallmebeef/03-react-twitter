@@ -4,12 +4,6 @@ import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-
-const style = {
-  margin: 12,
-};
-
-
 class Navigation extends Component{
   render () {
     return (
