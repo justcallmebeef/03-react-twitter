@@ -8,9 +8,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import routes from './routes';
-import store from './configureStore';
+import configureStore from './configureStore';
 import { loadMessages } from './actions/messageActions';
 
+const store = configureStore();
 store.dispatch(loadMessages());
 
 const AppContainer = () => (
