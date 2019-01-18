@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import ProfileAvatar from './ProfileAvatar';
 import AvatarDialog from './AvatarDialog';
+import { getMessages } from '../../api/messageApi'; 
 
 import './Profile.css';
 
@@ -11,13 +12,38 @@ class Profile extends Component {
     avatar: 'https://via.placeholder.com/150x150',
     name: 'Paul',
     handle: '@jack',
-    message_count: '200',
-    star_count: '73',
+    message_count: this.getMessages(),
+    // star_count: '73',
     bio: 'Front end dev located in Denver',
     location: 'Denver, CO',
     link: 'github.com/git',
     birth_date: '03/02/1999',
     dialog_open: false
+  }
+
+  getMessages() {
+    getMessages().then(res => {
+      this.setState({star_count: this.addStars(res.data)});
+      this.setState({message_count: res.data.length});
+      this.setState({messages: this.renderMessageItem(res.data)});
+    });
+  }
+
+  renderMessageItem(messagesList) {
+    let htmlList = [];
+    // TODO Sort array by time stamp, once time stamp is getting here from data.
+    messagesList.forEach((message, index) => {
+      htmlList.push(<li key={index}>--- {message.text}</li>);
+    })
+    return htmlList;
+  }
+
+  addStars(messagesList) {
+    let stars = 0;
+    messagesList.forEach(message => {
+      stars += message.stars;
+    });
+    return stars;
   }
 
   avatarClicked(e) {
@@ -47,13 +73,21 @@ class Profile extends Component {
           <p>
             {this.state.bio}
           </p>
+          
           <ul className="InfoList">
             <li>{this.state.location}</li>
             <li>{this.state.link}</li>
             <li>{this.state.birth_date}</li>
           </ul>
+          
         </div>
         <AvatarDialog changeAvatar={this.changeAvatar}/>
+        <div className="messageView">
+          <h2>{this.state.name}'s Message List</h2>
+          <ul>
+            {this.state.messages}
+          </ul>
+        </div>
       </div>
     )
   }
