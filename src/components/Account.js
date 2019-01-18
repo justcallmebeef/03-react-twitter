@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Navigation from './Navigation';
-import './Profile/Account.css'
+import './Account.css'
 
-class Account extends React.Component {
+class Account extends Component {
 
   submitButton = () => {
     alert('Updates Submitted!')
