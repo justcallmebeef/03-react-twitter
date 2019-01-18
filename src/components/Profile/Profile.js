@@ -4,33 +4,43 @@ import AvatarDialog from './AvatarDialog';
 import { getMessages } from '../../api/messageApi';
 
 import './Profile.css';
+import { sortMessagesById } from '../../Utilities/userUtilities';
+import { addUsersStars } from '../../Utilities/userUtilities';
 
 
 class Profile extends Component {
-  state = {
-    avatar: 'https://via.placeholder.com/150x150',
-    name: 'Paul',
-    handle: '@jack',
-    message_count: 0,
-    // star_count: '73',
-    bio: 'Front end dev located in Denver',
-    location: 'Denver, CO',
-    link: 'github.com/git',
-    birth_date: '03/02/1999',
-    dialog_open: false
+  constructor()  {
+    super();
+    this.state = {
+      avatar: 'https://via.placeholder.com/150x150',
+      name: 'Paul',
+      handle: '@jack',
+      message_count: 0,
+      star_count: 0,
+      bio: 'Front end dev located in Denver',
+      location: 'Denver, CO',
+      link: 'github.com/git',
+      birth_date: '03/02/1999',
+      dialog_open: false
+    };
   }
 
-  setStateFromMessages() {
-    getMessages().then((res) => {
-      if (res && res.data) {
-        this.setState({ star_count: this.addStars(res.data) });
-        this.setState({ message_count: res.data.length });
-        this.setState({ messages: this.renderMessageItem(res.data) });
-      }
+  componentDidMount() {
+    this.initializeUserDashboard();
+  }
+
+  initializeUserDashboard = () => {
+    getMessages().then(res => {
+      sortMessagesById(res.data);
+      this.setState({
+        star_count: addUsersStars(res.data),
+        message_count: res.data.length,
+        messages: this.renderMessageItem(res.data)
+      });
     });
   }
 
-  renderMessageItem(messagesList) {
+  renderMessageItem = (messagesList) => {
     let htmlList = [];
     // TODO Sort array by time stamp, once time stamp is getting here from data.
     messagesList.forEach((message, index) => {
@@ -39,17 +49,7 @@ class Profile extends Component {
     return htmlList;
   }
 
-  addStars(messagesList) {
-    let stars = 0;
-    if (messagesList) {
-      messagesList.forEach(message => {
-        stars += message.stars;
-      });
-    }
-    return stars;
-  }
-
-  avatarClicked(e) {
+  avatarClicked = (e) => {
      e.preventDefault();
      console.log('The link was clicked.');
   }
