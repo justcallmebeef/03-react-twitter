@@ -30,12 +30,14 @@ class Profile extends Component {
 
   initializeUserDashboard = () => {
     getMessages().then((res) => {
-      sortMessagesById(res.data);
-      this.setState({
-        star_count: addUsersStars(res.data),
-        message_count: res.data.length,
-        messages: this.renderMessageItem(res.data)
-      });
+      if (res && res.data) {
+        sortMessagesById(res.data);
+        this.setState({
+          star_count: addUsersStars(res.data),
+          message_count: res.data.length,
+          messages: this.renderMessageItem(res.data)
+        });
+      }
     });
   }
 
@@ -75,6 +77,7 @@ class Profile extends Component {
   }
 
   render() {
+    this.initializeUserDashboard();
     return (
       <div className="ProfileContainer">
         <div className="ProfileHeader">
