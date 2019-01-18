@@ -12,6 +12,12 @@
 
 * Make sure you have postgres installed globally, then from the base directory seed the databases:
 
+Start postgres (on a mac)
+```bash
+yarn run start-postgres
+```
+(note: you can stop postgres on a mac with `yarn run stop-postgres`)
+
 If this is the first time creating the databases use: 
 
 ```bash
