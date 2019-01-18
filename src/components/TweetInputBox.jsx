@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class TweetInputBox extends Component {
   constructor() {
@@ -20,17 +22,38 @@ class TweetInputBox extends Component {
     // HTTP POST TO API: tweet
   }
 
-  render() {
-    return (
-      <div>
+  tweetBox(){
+    if(this.props.user.id !== undefined){
+      return(
         <form onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.handleChange} maxLength="144" name="tweetInputBox" placeholder="What's on your mind?" />
           <input type="submit" value="Submit" />
         </form>
+      );
+    }
+
+    return <p>Login to React Boulder Twitter to post your thoughts!</p>;
+  }
+
+  render() {
+    return (
+      <div>
+        { this.tweetBox() }
       </div>
     );
   }
 }
 
-export default TweetInputBox;
+function mapStateToProps(state, props){
+  return {
+    app: state.app,
+    user: state.user
+  }
+}
 
+function mapDispatchToProps(dispatch){
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TweetInputBox);
