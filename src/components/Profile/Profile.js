@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import ProfileAvatar from './ProfileAvatar';
 import AvatarDialog from './AvatarDialog';
 import { getMessages } from '../../api/messageApi';
@@ -7,9 +7,8 @@ import './Profile.css';
 import { sortMessagesById } from '../../Utilities/userUtilities';
 import { addUsersStars } from '../../Utilities/userUtilities';
 
-
 class Profile extends Component {
-  constructor()  {
+  constructor() {
     super();
     this.state = {
       avatar: 'https://via.placeholder.com/150x150',
@@ -43,22 +42,38 @@ class Profile extends Component {
   }
 
   renderMessageItem = (messagesList) => {
-    let htmlList = [];
+    const htmlList = [];
     // TODO Sort array by time stamp, once time stamp is getting here from data.
+    // sorted messages by descending date
+    messagesList.sort((a, b) => {
+      if (a.created_at > b.created_at) {
+        return -1;
+      }
+
+      if (a.created_at < b.created_at) {
+        return 1;
+      }
+
+      return 0;
+    });
     messagesList.forEach((message, index) => {
-      htmlList.push(<li key={index}>--- {message.text}</li>);
-    })
+      htmlList.push(<li key={index}>
+---
+        {' '}
+        {message.text}
+      </li>);
+    });
     return htmlList;
   }
 
   avatarClicked = (e) => {
-     e.preventDefault();
-     console.log('The link was clicked.');
+    e.preventDefault();
+    console.log('The link was clicked.');
   }
 
   changeAvatar = (url) => {
-    console.log("Changing avatar");
-    this.setState({avatar: url});
+    console.log('Changing avatar');
+    this.setState({ avatar: url });
   }
 
   render() {
@@ -66,13 +81,25 @@ class Profile extends Component {
     return (
       <div className="ProfileContainer">
         <div className="ProfileHeader">
-        <ProfileAvatar onClick={this.avatarClicked}  image={this.state.avatar} />
+          <ProfileAvatar onClick={this.avatarClicked} image={this.state.avatar} />
           <h1
             data-handle={this.state.handle}
-            className="handle">{this.state.name}</h1>
+            className="handle"
+          >
+            {this.state.name}
+
+          </h1>
           <ul className="InfoList">
-            <li>messages: {this.state.message_count}</li>
-            <li>likes: {this.state.star_count}</li>
+            <li>
+messages:
+              {' '}
+              {this.state.message_count}
+            </li>
+            <li>
+likes:
+              {' '}
+              {this.state.star_count}
+            </li>
           </ul>
         </div>
         <div className="InfoContainer">
@@ -87,16 +114,19 @@ class Profile extends Component {
           </ul>
 
         </div>
-        <AvatarDialog changeAvatar={this.changeAvatar}/>
+        <AvatarDialog changeAvatar={this.changeAvatar} />
         <div className="messageView">
-          <h2>{this.state.name}'s Message List</h2>
+          <h2>
+            {this.state.name}
+'s Message List
+          </h2>
           <ul>
             {this.state.messages}
           </ul>
         </div>
       </div>
-    )
+    );
   }
-};
+}
 
 export default Profile;
