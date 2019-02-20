@@ -61,7 +61,8 @@ class Navigation extends Component{
       // iconClassNameRight="muidocs-icon-navigation-expand-more"
       iconElementLeft={<div></div>}
       iconElementRight={
-        <div>
+         <div className='nav-row'>
+            <img src='./white-logo.png' alt='react-twitter logo' className='nav-logo' />
           <Link to='/'>
             <FlatButton label="Dashboard" secondary={this.props.location.pathname === "/"}/>
           </Link>
@@ -71,8 +72,9 @@ class Navigation extends Component{
           { this.logoutButton() }
         </div>}
       />
-    )};
-  }
+    )
+  };
+}
 
 function mapStateToProps(state, props){
   return {
