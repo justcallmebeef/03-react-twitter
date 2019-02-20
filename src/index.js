@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import './index.css';
@@ -11,17 +12,19 @@ import routes from './routes';
 import configureStore from './configureStore';
 import { loadMessages } from './actions/messageActions';
 
-const store = configureStore();
+const { persistor, store } = configureStore();
 store.dispatch(loadMessages());
 
 const AppContainer = () => (
   <MuiThemeProvider>
     <Provider store={store}>
-      <BrowserRouter>
-        <div>
-          {routes}
-        </div>
-      </BrowserRouter>
+      <PersistGate loading={ null } persistor={ persistor }>
+        <BrowserRouter>
+          <div>
+            {routes}
+          </div>
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </MuiThemeProvider>
 );
