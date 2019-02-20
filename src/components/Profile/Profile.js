@@ -77,7 +77,7 @@ class Profile extends Component {
   }
 
   render() {
-    this.initializeUserDashboard();
+    // this.initializeUserDashboard();
     return (
       <div className="ProfileContainer">
         <div className="ProfileHeader">

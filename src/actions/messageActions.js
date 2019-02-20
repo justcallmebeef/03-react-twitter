@@ -6,13 +6,6 @@ import * as messageApi from '../api/messageApi';
 
 // *** ACTIONS *** //
 
-export function postMessage(message) {
-  return {
-    type: POST_MESSAGE,
-    message
-  };
-}
-
 export function getMessagesSuccess(messages) {
   return {
     type: GET_MESSAGES_SUCCESS,
