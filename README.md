@@ -40,6 +40,8 @@ Warning! This will drop and recreate all your dev databases!
 ## To Run All Tests
 * `$ yarn test`
 
+## Project Waffle Board for User Stories and Issues, but don't use it.
+* https://waffle.io/boulderReactCodingNight/03-react-twitter
 
 ## Sync With Master Repo
 * git remote add upstream https://github.com/boulderReactCodingNight/03-react-twitter.git
