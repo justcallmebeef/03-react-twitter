@@ -4,7 +4,6 @@ import AvatarDialog from './AvatarDialog';
 import { getMessages } from '../../api/messageApi';
 
 import './Profile.css';
-import { sortMessagesById } from '../../Utilities/userUtilities';
 import { addUsersStars } from '../../Utilities/userUtilities';
 
 class Profile extends Component {
@@ -31,7 +30,6 @@ class Profile extends Component {
   initializeUserDashboard = () => {
     getMessages().then((res) => {
       if (res && res.data) {
-        sortMessagesById(res.data);
         this.setState({
           star_count: addUsersStars(res.data),
           message_count: res.data.length,
