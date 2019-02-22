@@ -41,19 +41,6 @@ class Profile extends Component {
 
   renderMessageItem = (messagesList) => {
     const htmlList = [];
-    // TODO Sort array by time stamp, once time stamp is getting here from data.
-    // sorted messages by descending date
-    messagesList.sort((a, b) => {
-      if (a.created_at > b.created_at) {
-        return -1;
-      }
-
-      if (a.created_at < b.created_at) {
-        return 1;
-      }
-
-      return 0;
-    });
     messagesList.forEach((message, index) => {
       htmlList.push(<li key={index}>
 ---
