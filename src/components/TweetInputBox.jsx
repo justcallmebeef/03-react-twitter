@@ -22,7 +22,7 @@ class TweetInputBox extends Component {
     const { tweetInputBox } = this.state;
     this.setState({ tweet: tweetInputBox || '' });
 
-    if(this.props.user.id !== undefined){
+    if (this.props.user.id !== undefined) {
       messageApi.postMessage(this.props.user.id, this.state.tweet).then(() => {
         console.log('TODO: Call load messages action. Dispatch to redux.');
         this.setState({ tweet: '' });
@@ -30,38 +30,37 @@ class TweetInputBox extends Component {
     }
   }
 
-  tweetBox(){
-    if(this.props.user.id !== undefined){
-      return(
-        <form onSubmit={this.handleSubmit}>
-          <input
-            value={ this.state.tweet }
-            type="text" onChange={this.handleChange} maxLength="144" name="tweetInputBox" placeholder="What's on your mind?" />
-          <input type="submit" value="Submit" />
-        </form>
-      );
-    }
+  tweetBox() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input
+          value={this.state.tweet}
+          type="text" onChange={this.handleChange} maxLength="144" name="tweetInputBox" placeholder="What's on your mind?" />
+        <input type="submit" value="Submit" />
+      </form>
+    );
 
-    return <p>Login to React Boulder Twitter to post your thoughts!</p>;
+
+
   }
 
   render() {
     return (
       <div>
-        { this.tweetBox() }
+        {this.tweetBox()}
       </div>
     );
   }
 }
 
-function mapStateToProps(state, props){
+function mapStateToProps(state, props) {
   return {
     app: state.app,
     user: state.user
   }
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
   return {
     messageActions: bindActionCreators(messageActions, dispatch)
   }
