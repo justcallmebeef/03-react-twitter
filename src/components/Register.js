@@ -60,7 +60,7 @@ class Register extends React.Component {
             <label htmlFor="birthday" className="form-label">Birthday</label>
             <input type="text" id="birthday" className="form-input" onChange={this.onChange} value={this.state.birthday} name="birthday" />
           </div>
-          <button type="submit" className="btn">Login</button>
+          <button type="submit" className="btn register-btn">Login</button>
         </form>
       </div>
     )

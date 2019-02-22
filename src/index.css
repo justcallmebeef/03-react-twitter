@@ -33,6 +33,12 @@ body {
   margin: 3em auto;
 }
 
+.register .btn {
+  width: 100px;
+  margin: auto;
+  display: block;
+}
+
 .form-field {
   margin-bottom: 0.5em;
 }
