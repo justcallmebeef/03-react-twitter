@@ -7,7 +7,7 @@ import './Profile.css';
 import { addUsersStars } from '../../Utilities/userUtilities';
 import { connect } from 'react-redux';
 
-class Profile extends Component {
+export class Profile extends Component {
   constructor() {
     super();
     this.state = {
@@ -44,7 +44,7 @@ class Profile extends Component {
     const htmlList = [];
     messagesList.forEach((message, index) => {
       htmlList.push(<li key={index}>
----
+        ---
         {' '}
         {message.text}
       </li>);
@@ -69,20 +69,20 @@ class Profile extends Component {
         <div className="ProfileHeader">
           <ProfileAvatar onClick={this.avatarClicked} image={this.state.avatar} />
           <h1
-            data-handle={this.state.handle}
+            data-handle={`@${this.props.user.handle}`}
             className="handle"
           >
-            {this.state.name}
+            {this.props.user.name}
 
           </h1>
           <ul className="InfoList">
             <li>
-messages:
+              messages:
               {' '}
               {this.state.message_count}
             </li>
             <li>
-likes:
+              likes:
               {' '}
               {this.state.star_count}
             </li>
@@ -90,24 +90,24 @@ likes:
         </div>
         <div className="InfoContainer">
           <p>
-            {this.state.bio}
+            {this.props.user.bio}
           </p>
 
           <ul className="InfoList">
-            <li>{this.state.location}</li>
-            <li>{this.state.link}</li>
-            <li>{this.state.birth_date}</li>
+            <li>{this.props.user.location}</li>
+            <li>{this.props.user.link}</li>
+            <li>{this.props.user.birth_date}</li>
           </ul>
 
         </div>
         <AvatarDialog changeAvatar={this.changeAvatar} />
         <div className="messageView">
           <h2>
-            {this.state.name}
-'s Message List
+            {this.props.user.name}
+            's Message List
           </h2>
           <ul>
-            { this.props.userId
+            {this.props.userId
               ? this.state.messages
               : 'please log in to view messages'
             }
@@ -119,7 +119,8 @@ likes:
 }
 
 export const mapStateToProps = state => ({
-  userId: state.user.id
+  userId: state.user.id,
+  user: state.user
 });
 
 export default connect(mapStateToProps)(Profile);
