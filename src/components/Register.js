@@ -34,11 +34,11 @@ class Register extends React.Component {
             <input type="text" id="name" className="form-input" onChange={this.onChange} value={this.state.name} name="name" required />
           </div>
           <div className="form-field">
-            <label htmlFor="handle" className="form-label">handle</label>
+            <label htmlFor="handle" className="form-label">Handle</label>
             <input type="text" id="handle" className="form-input" onChange={this.onChange} value={this.state.handle} name="handle" required />
           </div>
           <div className="form-field">
-            <label htmlFor="password" className="form-label">email</label>
+            <label htmlFor="password" className="form-label">Email</label>
             <input type="email" id="password" className="form-input" onChange={this.onChange} value={this.state.email} name="email" required />
           </div>
           <div className="form-field">
@@ -47,20 +47,20 @@ class Register extends React.Component {
           </div>
 
           <div className="form-field">
-            <label htmlFor="avatar" className="form-label">avatar</label>
+            <label htmlFor="avatar" className="form-label">Avatar</label>
             <input type="file" id="avatar" className="form-input" onChange={this.onChange} value={this.state.avatar} name="avatar" />
           </div>
           <label htmlFor="bio" className="form-label">Bio</label>
           <textarea className="form-field" />
           <div className="form-field">
-            <label htmlFor="location" className="form-label">location</label>
+            <label htmlFor="location" className="form-label">Location</label>
             <input type="text" id="location" className="form-input" onChange={this.onChange} value={this.state.location} name="location" />
           </div>
           <div className="form-field">
             <label htmlFor="birthday" className="form-label">Birthday</label>
             <input type="text" id="birthday" className="form-input" onChange={this.onChange} value={this.state.birthday} name="birthday" />
           </div>
-          <button type="submit" className="btn register-btn">Login</button>
+          <button type="submit" className="btn register-btn">Sign Up</button>
         </form>
       </div>
     )
