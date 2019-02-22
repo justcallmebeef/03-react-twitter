@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ProfileAvatar from './ProfileAvatar';
 import AvatarDialog from './AvatarDialog';
 import { getMessages } from '../../api/messageApi';
-import { connect } from 'react-redux'
 
 import './Profile.css';
 import { addUsersStars } from '../../Utilities/userUtilities';
