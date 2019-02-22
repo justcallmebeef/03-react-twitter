@@ -6,6 +6,7 @@ import { getMessages } from '../../api/messageApi';
 import './Profile.css';
 import { sortMessagesById } from '../../Utilities/userUtilities';
 import { addUsersStars } from '../../Utilities/userUtilities';
+import { connect } from 'react-redux';
 
 class Profile extends Component {
   constructor() {
@@ -121,7 +122,10 @@ likes:
 's Message List
           </h2>
           <ul>
-            {this.state.messages}
+            { this.props.userId
+              ? this.state.messages
+              : 'please log in to view messages'
+            }
           </ul>
         </div>
       </div>
@@ -129,4 +133,8 @@ likes:
   }
 }
 
-export default Profile;
+export const mapStateToProps = state => ({
+  userId: state.user.id
+});
+
+export default connect(mapStateToProps)(Profile);
