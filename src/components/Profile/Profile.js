@@ -4,10 +4,10 @@ import AvatarDialog from './AvatarDialog';
 import { getMessages } from '../../api/messageApi';
 
 import './Profile.css';
-import { sortMessagesById } from '../../Utilities/userUtilities';
 import { addUsersStars } from '../../Utilities/userUtilities';
+import { connect } from 'react-redux';
 
-class Profile extends Component {
+export class Profile extends Component {
   constructor() {
     super();
     this.state = {
@@ -31,7 +31,6 @@ class Profile extends Component {
   initializeUserDashboard = () => {
     getMessages().then((res) => {
       if (res && res.data) {
-        sortMessagesById(res.data);
         this.setState({
           star_count: addUsersStars(res.data),
           message_count: res.data.length,
@@ -43,22 +42,9 @@ class Profile extends Component {
 
   renderMessageItem = (messagesList) => {
     const htmlList = [];
-    // TODO Sort array by time stamp, once time stamp is getting here from data.
-    // sorted messages by descending date
-    messagesList.sort((a, b) => {
-      if (a.created_at > b.created_at) {
-        return -1;
-      }
-
-      if (a.created_at < b.created_at) {
-        return 1;
-      }
-
-      return 0;
-    });
     messagesList.forEach((message, index) => {
       htmlList.push(<li key={index}>
----
+        ---
         {' '}
         {message.text}
       </li>);
@@ -83,20 +69,20 @@ class Profile extends Component {
         <div className="ProfileHeader">
           <ProfileAvatar onClick={this.avatarClicked} image={this.state.avatar} />
           <h1
-            data-handle={this.state.handle}
+            data-handle={`@${this.props.user.handle}`}
             className="handle"
           >
-            {this.state.name}
+            {this.props.user.name}
 
           </h1>
           <ul className="InfoList">
             <li>
-messages:
+              messages:
               {' '}
               {this.state.message_count}
             </li>
             <li>
-likes:
+              likes:
               {' '}
               {this.state.star_count}
             </li>
@@ -104,24 +90,27 @@ likes:
         </div>
         <div className="InfoContainer">
           <p>
-            {this.state.bio}
+            {this.props.user.bio}
           </p>
 
           <ul className="InfoList">
-            <li>{this.state.location}</li>
-            <li>{this.state.link}</li>
-            <li>{this.state.birth_date}</li>
+            <li>{this.props.user.location}</li>
+            <li>{this.props.user.link}</li>
+            <li>{this.props.user.birth_date}</li>
           </ul>
 
         </div>
         <AvatarDialog changeAvatar={this.changeAvatar} />
         <div className="messageView">
           <h2>
-            {this.state.name}
-'s Message List
+            {this.props.user.name}
+            's Message List
           </h2>
           <ul>
-            {this.state.messages}
+            {this.props.userId
+              ? this.state.messages
+              : 'please log in to view messages'
+            }
           </ul>
         </div>
       </div>
@@ -129,4 +118,9 @@ likes:
   }
 }
 
-export default Profile;
+export const mapStateToProps = state => ({
+  userId: state.user.id,
+  user: state.user
+});
+
+export default connect(mapStateToProps)(Profile);
