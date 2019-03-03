@@ -10,6 +10,8 @@ const findUserByEmail = async email => _.head(await knex('users').where('email',
 
 const findUserByHandle = async handle => _.head(await knex('users').where('handle', handle));
 
+const findUserById = async userId => _.head(await knex('users').where('id', userId));
+
 const loginUser = async (req, res, next) => {
   try {
     const { handle, password } = req.body;
@@ -63,9 +65,35 @@ const createUser = async (req, res, next) => {
   }
 };
 
+const updateUser = async (req, res, next) => {
+  try {
+    const {
+      userId, avatar
+    } = req.body;
+    let userInfo = {};
+
+    if (!userId ) return handleError(res, next, INV_REQ);
+    if (avatar || validator.isBase64(avatar)) userInfo.avatar = avatar;
+
+    const dbUser = await findUserById(userId);
+    if (!dbUser) return handleError(res, next, 'User Id does not exist.');
+
+    let updatedUser = await knex('users')
+      .where('id', userId)
+      .update(userInfo)
+      .returning(['id', 'name', 'handle', 'email', 'avatar', 'bio', 'location', 'birthday']);
+
+    res.data = updatedUser;
+    return next();
+  } catch (err) {
+    return handleError(res, next);
+  }
+};
+
 module.exports = {
   loginUser,
   createUser,
+  updateUser,
   findUserByEmail,
   findUserByHandle
 };

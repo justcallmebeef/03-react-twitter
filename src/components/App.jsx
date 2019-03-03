@@ -3,27 +3,31 @@ import TweetInputBox from './TweetInputBox';
 import './App.css';
 import Profile from './Profile/Profile';
 import Footer from './Footer/Footer';
+import { connect } from 'react-redux'
 
-class App extends Component {
-  // componentDidMount() {
-  //   fetch('/api/messages')
-  //     .then(stream => stream.json())
-  //     .then(res => console.log(res))
-  // }
+export class App extends Component {
+  constructor(props) {
+    super();
+  }
 
   render() {
     return (
       <div className="App">
         <h1 className="App-title">React Twitter</h1>
-        <p className="App-intro">
-          Check the console...
-        </p>
-        <Profile />
-        <TweetInputBox />
+        {!this.props.user.id && <p>Login to React Boulder Twitter to post your thoughts!</p>}
+        {this.props.user.id && <TweetInputBox />}
+        {this.props.user.id && <Profile />
+        }
         <Footer />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state, props) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, null)(App);

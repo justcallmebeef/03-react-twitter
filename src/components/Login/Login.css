@@ -1,16 +1,3 @@
-html {
-height: auto;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  height: 100vh; /* Avoid the IE 10-11 `min-height` bug. */
-}
-
 .form-error {
   color: #FFF;
   background: #F00;
@@ -26,17 +13,6 @@ body {
 .login {
   max-width: 350px;
   margin: 3em auto;
-}
-
-.register {
-  max-width: 400px;
-  margin: 3em auto;
-}
-
-.register .btn {
-  width: 100px;
-  margin: auto;
-  display: block;
 }
 
 .form-field {
@@ -66,14 +42,4 @@ body {
   width: 75px;
   margin: auto;
   display: block;
-}
-
-.nav-row {
-}
-
-.nav-logo {
-  width: 50px;
-  position: absolute;
-  left: .5rem;
-  top: .5rem;
 }

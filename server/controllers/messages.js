@@ -6,7 +6,8 @@ const getAllMessages = async (req, res, next) => {
   try {
     const messages = await knex('messages')
       .join('users', 'messages.user_id', 'users.id')
-      .select(['messages.id', 'messages.text', 'messages.stars', 'users.handle', 'users.id']);
+      .select(['messages.id as message_id', 'messages.created_at', 'messages.text', 'messages.stars', 'users.handle', 'users.id as user_id'])
+      .orderBy('created_at', 'desc');
     res.data = messages;
     return next();
   } catch (err) {

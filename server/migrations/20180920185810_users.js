@@ -5,7 +5,7 @@ exports.up = knex => knex.schema
     table.string('handle').unique().notNullable();
     table.string('email').unique().notNullable();
     table.string('password').notNullable();
-    table.string('avatar');
+    table.text('avatar');
     table.string('bio');
     table.string('location');
     table.date('birthday');

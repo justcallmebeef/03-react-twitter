@@ -12,6 +12,12 @@
 
 * Make sure you have postgres installed globally, then from the base directory seed the databases:
 
+Start postgres (on a mac)
+```bash
+yarn run start-postgres
+```
+(note: you can stop postgres on a mac with `yarn run stop-postgres`)
+
 If this is the first time creating the databases use: 
 
 ```bash
@@ -34,6 +40,8 @@ Warning! This will drop and recreate all your dev databases!
 ## To Run All Tests
 * `$ yarn test`
 
+## Project Waffle Board for User Stories and Issues, but don't use it.
+* https://waffle.io/boulderReactCodingNight/03-react-twitter
 
 ## Sync With Master Repo
 * git remote add upstream https://github.com/boulderReactCodingNight/03-react-twitter.git

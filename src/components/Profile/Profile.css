@@ -2,7 +2,7 @@
   background-color: #fff;
   box-shadow: 1px 2px 3px #333;
   width: 600px;
-  height: 165px;
+  height: auto;
   padding: 20px;
   margin: auto;
   display: grid;
@@ -29,7 +29,6 @@
 }
 
 .InfoContainer {
-  display: grid;
   position: absolute;
   margin: 7rem;
 }
@@ -39,8 +38,17 @@
   display: flex;
 }
 
-
-
-ul li  {
+ul li {
   padding: 10px;
+}
+
+.messageView {
+  padding: 2em;
+
+}
+
+.messageView ul li {
+  padding: 0;
+  padding-bottom: 1em;
+  list-style: none;
 }

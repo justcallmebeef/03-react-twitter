@@ -13,7 +13,7 @@
     "lodash": "^4.17.11",
     "lodash.cond": "^4.5.2",
     "material-ui": "^0.20.2",
-    "nodemon": "^1.18.4",
+    "nodemon": "^1.18.9",
     "pg": "^7.4.3",
     "prop-types": "^15.6.2",
     "react": "^16.5.1",
@@ -22,6 +22,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "redux": "^4.0.1",
+    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
     "sinon": "^6.3.4",
     "styled-components": "^4.1.1",
@@ -33,6 +34,8 @@
     "build": "react-scripts build",
     "test": "cd server/; NODE_ENV=test mocha --exit",
     "eject": "react-scripts eject",
+    "start-postgres": "pg_ctl -D /usr/local/var/postgres start",
+    "stop-postgres": "pg_ctl -D /usr/local/var/postgres stop",
     "drop": "dropdb react_twitter_dev && dropdb react_twitter_test",
     "seed": "createdb react_twitter_dev && createdb react_twitter_test && cd server && knex migrate:latest && knex migrate:latest --env test && knex seed:run && knex seed:run --env test"
   },
@@ -45,7 +48,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.4",
+    "nodemon": "^1.18.9",
     "proxyquire": "^2.1.0",
     "supertest": "^3.3.0"
   }

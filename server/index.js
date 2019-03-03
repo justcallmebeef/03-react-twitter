@@ -9,6 +9,7 @@ const {
 } = require('./controllers/messages');
 const {
   loginUser,
+  updateUser,
   createUser,
   findUserByHandle
 } = require('./controllers/users');
@@ -27,6 +28,7 @@ app.get('/api/messages/user/:userId', getMessagesByUser);
 app.post('/api/messages', createMessage);
 
 app.post('/api/users/login', loginUser);
+app.post('/api/users/update', updateUser);
 app.post('/api/users/signup', createUser);
 app.get('/api/users/:handle', findUserByHandle);
 
@@ -42,6 +44,6 @@ app.use('*', (req, res) => {
   else res.send({ data: res.data });
 });
 
-app.listen(process.env.PORT || 8080);
+if (!module.parent) app.listen(process.env.PORT || 8080);
 
 module.exports = app;
