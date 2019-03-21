@@ -40,17 +40,11 @@ export class Profile extends Component {
     });
   }
 
-  renderMessageItem = (messagesList) => {
-    const htmlList = [];
-    messagesList.forEach((message, index) => {
-      htmlList.push(<li key={index}>
-        ---
-        {' '}
-        {message.text}
-      </li>);
-    });
-    return htmlList;
-  }
+  renderMessageItem = messagesList => messagesList.map((message, index) => (
+    <li key={index}>
+      {`${message.created_at.replace(/T/, ' ').replace(/\..*/, '')} ${message.handle} ${message.text}`}
+    </li>
+  ));
 
   avatarClicked = (e) => {
     e.preventDefault();
