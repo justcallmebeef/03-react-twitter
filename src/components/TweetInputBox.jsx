@@ -33,7 +33,7 @@ class TweetInputBox extends Component {
   tweetBox() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input
+        <input class="tweet-input-box"
           value={this.state.tweet}
           type="text" onChange={this.handleChange} maxLength="144" name="tweetInputBox" placeholder="What's on your mind?" />
         <input type="submit" value="Submit" />

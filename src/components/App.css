@@ -31,4 +31,14 @@
 /*Tweet Input Box*/
 .tweet-form {
   margin-top: 2em;
+  border-radius: 25;
+}
+
+.tweet-input-box {
+  max-height: 36px;
+  min-height: 36px;
+  border-radius: 15px;
+  padding: 10px 12px;
+  background-color: #f2f2f2;
+  color: #1da1f2;
 }
