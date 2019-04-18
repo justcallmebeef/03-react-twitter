@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProfileAvatar from './ProfileAvatar';
 import AvatarDialog from './AvatarDialog';
-import { getMessages } from '../../api/messageApi';
+import { getMessages, addStarToMessage } from '../../api/messageApi';
 
 import './Profile.css';
 import { addUsersStars } from '../../Utilities/userUtilities';
@@ -42,7 +42,7 @@ export class Profile extends Component {
 
   renderMessageItem = messagesList => messagesList.map((message, index) => (
     <li key={index}>
-      {`${message.created_at.replace(/T/, ' ').replace(/\..*/, '')} ${message.handle} ${message.text}`}
+      {`${message.created_at.replace(/T/, ' ').replace(/\..*/, '')} ${message.handle} ${message.text}`} ({message.stars} stars)<button messageid={message.message_id} onClick={this.handleUpStarClick}> UpStar!</button>
     </li>
   ));
 
@@ -54,6 +54,18 @@ export class Profile extends Component {
   changeAvatar = (url) => {
     console.log('Changing avatar');
     this.setState({ avatar: url });
+  }
+
+  handleUpStarClick = (e) => {
+    e.preventDefault();
+    console.log(e.target.attributes.messageid.value);
+    let messageid = e.target.attributes.messageid.value;
+
+    addStarToMessage(messageid).then((res) => {
+      console.log(res);
+      this.initializeUserDashboard();
+    });
+
   }
 
   render() {
