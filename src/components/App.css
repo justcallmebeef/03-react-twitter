@@ -36,6 +36,9 @@
   width: 50%;
   margin: auto;
   border-radius: 25px;
+  display: flex; 
+  flex-direction: column;
+  align-items: center
 }
 
 .tweet-input-box {
@@ -62,23 +65,20 @@
   display: block;
 }
 
+.tweedle-button {
+  color: white;
+  background-color: #1da1f2;
+  border-radius: 15px;
+  width: 7em; 
+  margin: 5px;
+  display: flex; 
+  justify-content: center; 
+}
+
 .tweet-input-box::placeholder {
   color: #1da1f2;
 }
 
 .tweet-input-box:hover {
   background-color: #e8e8e8;
-}
-
-.tweet-input-box:focus {
-  transform: scale(1.1);
-  border-radius: 23px;
-  border-width: 2px;
-  min-height: 80px;
-  outline: none;
-}
-
-.tweet-input-box:focus + input {
-  transform: scale(1.1);
-  visibility: visible;
 }

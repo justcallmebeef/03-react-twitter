@@ -14,7 +14,7 @@ class Account extends Component {
         <hr />
         <div className="changeInput">
           <label className="title">Edit Username</label>
-          <input className="input" placeholder="bruceWayne" /> <br />
+          <input className="input" placeholder="BruceWayne" /> <br />
           <label className="title">Edit Email</label>
           <input className="input" placeholder="bruceWayne@batcave.com" />{" "}
           <br />

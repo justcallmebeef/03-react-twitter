@@ -33,10 +33,10 @@ class TweetInputBox extends Component {
   tweetBox() {
     return (
       <form className="tweet-form" onSubmit={this.handleSubmit}>
-        <input className="tweet-input-box"
+        <textarea className="tweet-input-box"
           value={this.state.tweet}
-          type="text" onChange={this.handleChange} maxLength="144" name="tweetInputBox" autocomplete="off" placeholder="What's on your mind?" />
-        <input type="submit" value="Tweedle" />
+          type="text" onChange={this.handleChange} maxLength="144" name="tweetInputBox" autoComplete="off" placeholder="What's on your mind?" />
+        <button className="tweedle-button" type="submit">Tweedle</button>
       </form>
     );
 
